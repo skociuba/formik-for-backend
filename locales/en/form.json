@@ -1,0 +1,901 @@
+{
+  "auth": {
+    "register": {
+      "formTermsTitle": "Oświadczenia:"
+    }
+  },
+  "validation": {
+    "exists": "Podany adres e-mail nie istsnieje",
+    "more": "Wartośc musi być większa od zera",
+    "company": {
+      "nip": "Numer powinien składać się z 10 cyfr"
+    },
+    "address": {
+      "street": {
+        "min": "Minimum 3 znaki",
+        "max": "Maksimum 30 znaków"
+      },
+      "number": {
+        "min": "Minimum 1 znak",
+        "max": "Maksimum 5 znaków"
+      },
+      "city": {
+        "min": "Nazwa miasta powinna składać się przynajmniej z 3 znaków",
+        "max": "Nazwa miasta powinna składać się z maksymlanie 30 znaków"
+      },
+      "apt_number": {
+        "onlyNumbers": "Dozwolone są tylko cyfry"
+      },
+      "zip": {
+        "format": "Dozwolony format: XX-XXX"
+      }
+    },
+    "email": {
+      "invalid": "Wprowadź poprawny adres e-mail!",
+      "notMatch": "Adresy email muszą się zgadzać."
+    },
+    "password": {
+      "required": "Wprowadź poprawne hasło",
+      "min": "Hasło nie jest wystarczająco długie, musi składac się z minimum {minLength} znaków.",
+      "minLowercase": "Hasło musi zawierać przynajmniej 1 małą literę",
+      "minUppercase": "Hasło musi zawierać przynajmniej 1 dużą literę",
+      "minSymbols": "Hasło musi zawierać przynajmniej 1 znak specjalny",
+      "minNumbers": "Hasło musi zawierać przynajmniej 1 cyfrę",
+      "notMatch": "Hasła muszą się zgadzać"
+    },
+    "phone": {
+      "notMatch": "Format numeru telefonu: XXXXXXXXX"
+    },
+    "pesel": {
+      "valid": "PESEL powinien zawierać 11 cyfr",
+      "isPesel": "Uzupełnij informację czy posiadasz PESEL",
+      "invalid": "Niepoprawny numer PESEL"
+    },
+    "required": "Pole jest wymagane",
+    "terms": {
+      "required": "Musisz zaakceptować warunki i postanowienia."
+    },
+    "auth": {
+      "failed": "Podane dane są niepoprawne. Spróbuj ponownie."
+    },
+    "validation": {
+      "numeric": "Wprowadzony numer pesel jest nieprawidłowy.",
+      "max": {
+        "numeric": "Kwota doładowania nie może przekraczać 55 000 zł",
+        "array": "Została przekroczona maksymalna liczba biletów w jednej transakcji"
+      },
+      "digits": "Wprowadzony numer pesel jest nieprawidłowy.",
+      "exist": "Wybrany :attribute jest już zajęty.",
+      "unique": "Podany :attribute jest już zajęty.",
+      "have_card": "Wybrany :attribute jest już przypisany do innej karty.",
+      "after_or_equal": "Pole :attribute musi być datą nie wcześniejszą niż aktualna.",
+      "exists": "Podany adres e-mail nie istsnieje",
+
+      "required_role": "Nie została wybrana żadna rola",
+      "more": "Wartośc musi być większa od zera",
+      "length": "Numer karty ma nieodpowiednią ilość znaków",
+      "required_with": "Musisz dodać conajmniej jeden załącznik.",
+      "current_password": "Nieprawidłowo wprowadzono aktualnie używane hasło.",
+      "pesel": { "invalid": "Niepoprawny numer PESEL" },
+      "email": "Wprowadzono błędny adres e-mail",
+      "integer": "Wprowadzono błędny numer telefonu",
+      "uploaded": "Wystąpił błąd podczas przesyłania pliku",
+      "password": {
+        "uncompromised": "Podane hasło nie jest wystarczająco mocne. Użyj mocniejszego hasła."
+      }
+    },
+    "discount": {
+      "validation": {
+        "required": "Wypełnij wymagane pola.",
+        "required_with": "System wymaga dodania dwóch załączników"
+      }
+    },
+    "user": {
+      "firstName": "Wprowadź poprawne imię",
+      "lastName": "Wprowadź poprawne nazwisko",
+      "card": {
+        "active": "Karta jest aktywna"
+      }
+    },
+    "telephone": {
+      "min": "Numer powinien składać się conajmniej z 9 cyfr",
+      "max": "Numer powinien składać się z maksymalnie 10 cyfr"
+    },
+    "passwords": {
+      "throttled": "Coś poszło nie tak. Spróbuj ponownie."
+    },
+    "choiceCard": "Wybierz nośnik i bilety",
+    "case": {
+      "title": {
+        "required": "Wpisz tytuł sprawy",
+        "min": "Minimum 4 znaki",
+        "max": "Maksymalnie 255 znaków"
+      },
+      "description": {
+        "required": "Opisz swoją sprawę",
+        "min": "Minimum 10 znaków",
+        "max": "Maksymalnie 1000 znaków"
+      }
+    },
+    "card": {
+      "id": {
+        "required": "Wybierz nośnik"
+      },
+      "name": {
+        "required": "Wpisz nazwę karty",
+        "min": "Nazwa karty powinna zawierać conajmniej 5 znaków",
+        "max": "Nazwa karty powinna zawierać maksymalnie 35 znaków"
+      },
+      "type": {
+        "required": "Wybierz rodzaj nośnika"
+      },
+      "status": {
+        "required": "Wybierz staus"
+      },
+      "number": {
+        "required": "Wpisz numer karty",
+        "emvCardMatch": "Numer powinien składać się z 10 cyfr",
+        "studentCardMatch": "Numer powinien składać się z 6 cyfr",
+        "cityCardMatch": "Numer powinien składać się z 17 cyfr",
+        "cityCardMin": "Minimum 3 cyfry",
+        "cityCardMax": "Maksymalnie 25 cyfr",
+        "cardMin": "Numer powinien składać się z 3 cyfr"
+      },
+      "expiration_date": {
+        "required": "Podaj datę ważności",
+        "match": "Wymagany format: mm/RR"
+      },
+      "user": {
+        "required": "Wybierz użytkownika z listy"
+      },
+      "title": "Wpisz tytuł sprawy",
+      "description": "Opisz swoją sprawę",
+      "city_card": {
+        "min": "Minimum 3 cyfry",
+        "max": "Maksymalnie 25 cyfr"
+      }
+    },
+    "file": {
+      "format": "Dozwolony format plików: .png, .pdf, .jpg",
+      "max": "Maksymalna liczba plików: 3",
+      "maxSize": "Maksymalna waga jednego pliku to 1MB"
+    },
+    "label": {
+      "order": {
+        "item": {
+          "activation_date": "data aktywacji"
+        }
+      },
+      "card": {
+        "number": "numer karty",
+        "user": "użytkownik"
+      },
+      "user": {
+        "card_number": "numer karty",
+        "email": "adres email"
+      },
+      "wallet": {
+        "positive": "Wartość musi być większa niż 1"
+      },
+      "admin": {
+        "ticket_id": "identyfikator biletu"
+      }
+    },
+    "wallet": {
+      "positive": "Wartość musi być większa niż 0"
+    }
+  },
+  "button": {
+    "login": "Zaloguj się",
+    "resetPassword": "Wyślij reset hasła",
+    "changePassword": "Zmień hasło",
+    "saveChanges": "Zapisz zmiany",
+    "saveChange": "Zapisz zmianę",
+    "createAccount": "Załóż konto",
+    "filters": "Filtry",
+    "saveFilters": "Zapisz filtry",
+    "cancel": "Anuluj",
+    "addNewCard": "Dodaj nową kartę",
+    "createNewCase": "Zgłoś nową Sprawę",
+    "createUser": "Dodaj użytkownika",
+    "goNext": "Przejdź dalej",
+    "createCase": "Załóż sprawę",
+    "goPayment": "Przejdź do płatności",
+    "exportToPdf": "Eksportuj do PDF",
+    "submit": "Potwierdź",
+    "block": "Zablokuj",
+    "unblock": "Odblokuj",
+    "createCard": "Utwórz nową kartę",
+    "checkEvents": "Zobacz inne wydarzenia",
+    "goFurther": "Przejdź dalej",
+    "startReturn": "Rozpocznij zwrot",
+    "exportFilters": "Eksportuj wyfiltrowane",
+    "confirmChangePassword": "Potwierdź zmianę hasła",
+    "saveAdmin": "Zapisz użytkownika",
+    "saveRole": "Zapisz uprawnienia",
+    "addEvent": "Dodaj wydarzenie",
+    "addEventCategoryBtn": "Dodaj kategorię",
+    "addNewSingleStatement": "Dodaj oświadczenie",
+    "addAnnouncement": "Dodaj komunikat",
+    "tickets": "Zapisz bilet",
+    "lines": "Zapisz linię",
+    "discounts": "Zapisz zniżkę",
+    "zones": "Zapisz strefę",
+    "tariffs": "Zapisz taryfę",
+    "duplicate": "Wystaw duplikat",
+    "tax": "Dodaj stawkę VAT"
+  },
+  "label": {
+    "expirationDateDiscount": "Termin ważności zniżki",
+    "email": "Adres email",
+    "typeEmail": "Podaj adres email",
+    "emailRepeat": "Powtórz email",
+    "emailOrId": "Adres email / Numer ID",
+    "password": "Hasło",
+    "newPassword": "Nowe hasło",
+    "oldPasswordType": "Podaj stare hasło",
+    "passwordType": "Podaj hasło",
+    "passwordRepeat": "Powtórz hasło",
+    "first_name": "Imię",
+    "typeFirst_name": "Podaj imię",
+    "last_name": "Nazwisko",
+    "typeLast_name": "Podaj nazwisko",
+    "havePesel": "Czy posiadasz numer PESEL?",
+    "yesOrNo": "TAK/NIE",
+    "0_mins": "0 minut",
+    "pesel": "Numer PESEL",
+    "typePesel": "Podaj numer PESEL",
+    "telephone": "Numer telefonu",
+    "typeTelephone": "Podaj numer telefonu",
+    "telephone_prefix": "Prefiks nr telefonu",
+    "birthday_date": "Data urodzenia",
+    "typeBirthday_date": "Podaj datę urodzenia",
+    "searchTicket": "Wyszukaj bilet",
+    "choiceDate": "Wybierz datę",
+    "status": "Status",
+    "user": "Użytkownik",
+    "cardUser": "Właściciel / Użytkownik",
+    "card": "Karta",
+    "cardType": "Rodzaj karty",
+    "caseType": "Rodzaj sprawy",
+    "caseStatus": "Status sprawy",
+    "operator": "Operator",
+    "searchCase": "Wyszukaj sprawę",
+    "searchTransactions": "Wyszukaj transakcje",
+    "searchStatement": "Wyszukaj oświadczenie",
+    "ticketType": "Rodzaj biletu",
+    "searchCity": "Miasto",
+    "searchUser": "Wyszukaj klienta",
+    "searchCustomer": "Wyszukaj Klienta (imię, nazwisko, NIP)",
+    "searchAdmin": "Wyszukaj użytkownika",
+    "searchCustomerDropdown": "Imię / Nazwisko / Numer PESEL",
+    "addCardName": "Nadaj nazwę karty",
+    "exampleCardName": "Np. Moja Karta Płatnicza",
+    "typeCard": "Rodzaj dokumentu",
+    "choiceTypeCard": "Wybierz rodzaj dokumentu",
+    "numberCard": "Numer karty",
+    "numberCardSix": "_ _ _ _ _ _",
+    "expirationDateCard": "Data Ważności",
+    "exampleExpirationDateCard": "mm/RR",
+    "caseOperator": "Opiekun sprawy",
+    "relatedTransaction": "Powiązana transakcja",
+    "choiceCaseType": "Wybierz rodzaj sprawy",
+    "typeCaseTitle": "Podaj tytuł sprawy",
+    "caseTitle": "Tytuł sprawy",
+    "caseDescription": "Opis sprawy",
+    "typeCaseDescription": "Dokładnie opisz sprawę",
+    "attachFiles": "Załącz pliki",
+    "searchEvent": "Wyszukaj wydarzenie",
+    "chooseStatus": "Wybierz status",
+    "street": "Ulica",
+    "houseNumber": "Nr domu",
+    "apartmentNumberShort": "Nr mieszkania",
+    "city": "Miasto",
+    "zip": "Kod pocztowy",
+    "documentType": "Typ dokumentu",
+    "documentNumber": "Nr dokumentu",
+    "expirationDate": "Data ważności",
+    "expirationDatePlaceholder": "mm/RR",
+    "pricePlaceholder": "0,00 zł",
+    "choose": "Wybierz",
+    "verified": "Zweryfikowany",
+    "notVerified": "Niezweryfikowany",
+    "cardStatus": "Status karty",
+    "chooseCardType": "Wybierz rodzaj nośnika",
+    "choiceCard": "Wybierz nośnik",
+    "cardName": "Nadaj nazwę karty",
+    "cardNameExample": "Np. Moja Karta Płatnicza",
+    "cardNumber": "Numer karty",
+    "time": "Godzina",
+    "searchUserDropdown": "Wpisz imię, nazwisko lub pesel",
+    "setType": "Wybierz rodzaj",
+    "companyName": "Nazwa firmy",
+    "addressNumber": "Nr domu",
+    "nip": "Numer NIP",
+    "cash": "Gotówka",
+    "creditCard": "Karta Płatnicza",
+    "client": "Klient",
+    "updated_at": "Ostatnia aktualizacja",
+    "created_at": "Data zgłoszenia",
+    "case_type": "Rodzaj sprawy",
+    "related_transaction": "Powiązana transakcja",
+    "caseEmployee": "Opiekun sprawy",
+    "value": "Wartość",
+    "choiceFilter": "Wybierz filtr",
+    "codeType": "Kod 2FA",
+    "permissions": "Uprawnienia",
+    "roles": "Role",
+    "typeName": "Podaj nazwę",
+    "typeRoleName": "Podaj nazwę uprawnień",
+    "websiteLocalization": "Lokalizacja wyświetlania",
+    "websitePlacement": "Lokalizacja wyświetlania",
+    "version": "Wersja",
+    "messageTitle": "Tytuł komunikatu",
+    "messageTitlePlaceholder": "Podaj tytuł komunikatu",
+    "messageContent": "Treść komunikatu",
+    "messageContentPlaceholder": "Podaj treść komunikatu",
+    "extendedDateTime": "DD-MM-RRRR; HH-MM",
+    "eventStartDate": "Start wydarzenia",
+    "eventEndDate": "Koniec wydarzenia",
+    "eventCategory": "Kategoria wydarzenia",
+    "eventShortDesc": "Krótki opis",
+    "eventContent": "Opis właściwy",
+    "ticketedEvent": "Wydarzenie biletowane?",
+    "ticketName": "Nazwa biletu",
+    "ticketDescription": "Opis",
+    "ticketMetaTitle": "Meta Title",
+    "ticketMetaTitlePlaceholder": "Podaj meta title",
+    "ticketMetaDesc": "Meta Desc.",
+    "ticketMetaDescPlaceholder": "Podaj meta desc.",
+    "slug": "Adres URL",
+    "slugPlaceholder": "/regulamin",
+    "uploadImage": "Wgraj obrazek",
+    "price": "Cena",
+    "categoryName": "Nazwa kategorii",
+    "typeDesc": "Wpisz treść",
+    "taxName": "Nazwa",
+    "taxValue": "Stawka",
+    "statementDetails": {
+      "name": "Nazwa oświadczenia",
+      "code": "Kod oświadczenia",
+      "version": "Wersja",
+      "content": "Treść oświadczenia",
+      "websitePlacement": "Lokalizacja",
+      "isRequired": "Czy wymagane",
+      "startDate": "Data obowiązywania - Start",
+      "endDate": "Data obowiązywania - Koniec",
+      "noLimitCheckbox": "Oświadczenie bez limitu końcowego"
+    },
+    "statementPlaceholders": {
+      "name": "Podaj nazwę",
+      "code": "Podaj kod",
+      "version": "Wersja",
+      "content": "Wpisz treść",
+      "websitePlacement": "Lokalizacja",
+      "isRequired": "Czy wymagane",
+      "startDate": "DD-MM-RRRR; HH-MM",
+      "endDate": "DD-MM-RRRR; HH-MM",
+      "noLimitCheckbox": "Oświadczenie bez limitu końcowego"
+    },
+    "announcementDetails": {
+      "noLimitCheckbox": "Komunikat bez limitu końcowego",
+      "startDate": "Data obowiązywania - Start",
+      "endDate": "Data obowiązywania - Koniec"
+    },
+    "discountsName": "Podaj nazwę zniżki",
+    "ticketsName": "Podaj nazwę biletu",
+    "linesName": "Podaj nazwę linii",
+    "zonesName": "Podaj nazwę strefy",
+    "tariffsName": "Podaj nazwę taryfy",
+    "enterName": "Podaj nazwę",
+    "enterLineId": "Podaj identyfikator linii",
+    "id": "Identyfikator",
+    "daily": "Dzienna",
+    "lineType": "Rodzaj linii",
+    "discountValue": "Wysokość zniżki (%)",
+    "discountsDescription": "Opis zniżki",
+    "zonesDescription": "Opis strefy",
+    "value15": "15",
+    "operatorId": "Identyfikator operatora transportu",
+    "giveId": "Podaj ID",
+    "ticketId": "Identyfikator biletu",
+    "giveTicketId": "Podaj ID biletu",
+    "valueOfTime": "Liczba jednostek czasu",
+    "typeOfTime": "Typ jednostki czasu",
+    "choseTimeType": "Wybierz jednostkę czasu",
+    "beforeTicketTime": "Wyprzedzenie z jakim można kupić bilet",
+    "tickets": "Bilety",
+    "span": "Przedział",
+    "addTimeSpan": "Dodaj kolejny przedział",
+    "addTicket": "Dodaj nowy bilet",
+    "addDiscount": "Dodaj nową zniżkę",
+    "contractQuestion": "Czy jest mozliwe uruchomienie kontraktu w dowolnym dniu?",
+    "dateStartLabel": "Data początku obowiązywania biletu",
+    "dateEndLabel": "Data końca obowiązywania biletu",
+    "inSaleFrom": "Od kiedy można kupić bilet?",
+    "canStartFrom": "Od kiedy mozna aktywować bilet?",
+    "displayedFrom": "Od kiedy można wyświetlić bilet?",
+    "inSaleTo": "Do kiedy można kupić bilet?",
+    "canStartTo": "Do kiedy mozna aktywować bilet?",
+    "displayedTo": "Do kiedy można wyświetlić bilet?",
+    "priceNetto": "Cena netto",
+    "taxRate": "Stawka VAT",
+    "priceGross": "Cena brutto",
+    "dateTimePlaceholder": "DD-MM-RRRR; HH-MM",
+    "0h": "0,00 h",
+    "tariffsId": "Identyfikator taryfy",
+    "choseTicket": "Wybierz bilet",
+    "choseTypeTicket": "Wybierz typ biletu",
+    "ticketPrice": "Cena biletu",
+    "ticketStartDay": "Początek obowiązywania biletu",
+    "ticketEndDay": "Koniec obowiązywania biletu",
+    "monday": "Poniedziałek",
+    "hour": "Godzina",
+    "choseDiscount": "Wybierz zniżkę",
+    "noDetails": "Brak",
+    "ticketForPerson": "Czy bilet na okaziciela?",
+    "no": "Nie",
+    "ticketForChangeLine": "Czy bilet przesiadkowy?",
+    "ticketForNightLines": "Czy bilet ważny na liniach nocnych?",
+    "ticketForReturn": "Czy bilet zwracalny?",
+    "searchDiscounts": "Wyszukaj zniżkę",
+    "searchZones": "Wyszukaj strefę",
+    "searchTariffs": "Wyszukaj taryfę",
+    "searchLines": "Wyszukaj linię",
+    "dailyTicket": "Bilet czasowy",
+    "5": "5",
+    "10": "10:00",
+    "firstDays": "Liczba pierwszych dni miesiąca w których można zakupić bilet",
+    "discountDescription": "Opis zniżki",
+    "enterDescription": "Wpisz treść",
+    "value10": "10",
+    "monthlyTicket": "Bilet miesięczny ( na cały miesiąc)",
+    "searchTickets": "Wyszukaj bilet",
+    "monthsBefore": "Liczba miesięcy w przód do których można zakupić bilet",
+    "identifier": "Identyfikator",
+    "enterIdentifier": "Wpisz identyfikator"
+  },
+  "options": {
+    "active": "Aktywne",
+    "not_active": "Niekatywne",
+    "chooseStatus": "Wybierz status",
+    "empty": "Brak",
+    "clear": "Wyczyść",
+    "isRequired": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "required": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "option_bearer": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "option_transfer": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "option_night": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "option_returnable": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "yesOrNo": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "havePesel": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "is_pesel": {
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "location": {
+      "home_page": "Strona główna",
+      "registration_form": "Formularz rejestracji"
+    },
+    "status": {
+      "active": "Aktywny",
+      "not_active": "Nieaktywny",
+      "inactive": "Nieaktywny",
+      "new": "Nowa",
+      "in_progress": "W trakcie",
+      "closed": "Zamknięta",
+      "payed": "Zapłacone",
+      "completed": "Transakcja udana",
+      "canceled": "Transakcja nieudana",
+      "failed": "Transakcja nieudana",
+      "brak": "Brak",
+
+      "transaction": {
+        "new": "Transakcja w toku",
+        "completed": "Transakcja udana",
+        "canceled": "Transakcja nieudana",
+        "failed": "Transakcja nieudana",
+        "brak": "Brak",
+        "transaction": {
+          "new": "Transakcja w toku",
+          "completed": "Transakcja udana",
+          "canceled": "Transakcja nieudana",
+          "failed": "Transakcja nieudana"
+        }
+      },
+      "type": {
+        "city_card": "Karta PKZ / Gminna",
+        "emv_card": "Karta płatnicza (kredytowa / debetowa)",
+        "student_card": "Legitymacja studencka",
+        "complaint": "Zgłoszenie ogólne",
+        "refund": "Zwrot/Reklamacja",
+        "application": "Wniosek o zniżkę",
+        "eq": "Równe",
+        "diff": "Różne niż",
+        "lt": "Mniejsze niż",
+        "lte": "Mniejsze lub równe",
+        "gt": "Większe niż",
+        "gte": "Większe lub równe",
+        "be": "Pomiędzy bez",
+        "bet": "Pomiędzy bez",
+        "betw": "Pomiędzy z",
+        "empty": "Puste",
+        "nempty": "Niepuste",
+        "daily": "Dzienna",
+        "bus": "Komunikacja",
+        "event": "Wydarzenia",
+        "monthlyTicket": "Bilet miesięczny ( na cały miesiąc)",
+        "dailyTicket": "Bilet jednorazowy czasowy",
+        "duplicate": "Wniosek o duplikat karty",
+        "invoice": "Faktura VAT",
+        "card": "Wniosek o wydanie nośnika",
+        "unblock": "Wniosek o odblokowanie nośnika/konta"
+      },
+      "tariffTicket": {
+        "monthlyTicket": "Bilet miesięczny ( na cały miesiąc)",
+        "dailyTicket": "Bilet jednorazowy czasowy"
+      },
+      "card_type": {
+        "city_card": "Karta PKZ / Gminna",
+        "emv_card": "Karta płatnicza (kredytowa / debetowa)",
+        "student_card": "Legitymacja studencka",
+        "complaint": "Zgłoszenie ogólne"
+      },
+      "document_type": {
+        "receipt": "Paragon",
+        "invoice": "Faktura VAT"
+      },
+      "downloadFile": {
+        "pdf": "Eksportuj do PDF",
+        "txt": "Eksportuj do Txt",
+        "html": "Eksportuj do HTML",
+        "csv": "Eksportuj do CSV",
+        "xlsx": "Eksportuj do XLSX"
+      },
+      "time_unit_type": {
+        "minutes": "Minuty",
+        "hours": "Godziny",
+        "days": "Dni"
+      },
+      "start_day": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
+      },
+      "end_day": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
+      },
+      "start_time": {
+        "00": "00:00",
+        "01": "01:00",
+        "02": "02:00",
+        "03": "03:00",
+        "04": "04:00",
+        "05": "05:00",
+        "06": "06:00",
+        "07": "07:00",
+        "08": "08:00",
+        "09": "09:00",
+        "10": "10:00",
+        "11": "11:00",
+        "12": "12:00",
+        "13": "13:00",
+        "14": "14:00",
+        "15": "15:00",
+        "16": "16:00",
+        "17": "17:00",
+        "18": "18:00",
+        "19": "19:00",
+        "20": "20:00",
+        "21": "21:00",
+        "22": "22:00",
+        "23": "23:00"
+      },
+      "end_time": {
+        "00": "00:00",
+        "01": "01:00",
+        "02": "02:00",
+        "03": "03:00",
+        "04": "04:00",
+        "05": "05:00",
+        "06": "06:00",
+        "07": "07:00",
+        "08": "08:00",
+        "09": "09:00",
+        "10": "10:00",
+        "11": "11:00",
+        "12": "12:00",
+        "13": "13:00",
+        "14": "14:00",
+        "15": "15:00",
+        "16": "16:00",
+        "17": "17:00",
+        "18": "18:00",
+        "19": "19:00",
+        "20": "20:00",
+        "21": "21:00",
+        "22": "22:00",
+        "23": "23:00"
+      }
+    },
+    "ticket_type": {
+      "monthly": "Bilet miesięczny ( na cały miesiąc)",
+      "daily": "Bilet jednorazowy czasowy"
+    },
+    "type": {
+      "city_card": "Karta PKZ / Gminna",
+      "emv_card": "Karta płatnicza (kredytowa / debetowa)",
+      "student_card": "Legitymacja studencka",
+      "complaint": "Zgłoszenie ogólne",
+      "refund": "Zwrot/Reklamacja",
+      "application": "Wniosek o zniżkę",
+      "eq": "Równe",
+      "diff": "Różne niż",
+      "lt": "Mniejsze niż",
+      "lte": "Mniejsze lub równe",
+      "gt": "Większe niż",
+      "gte": "Większe lub równe",
+      "be": "Pomiędzy",
+      "bet": "Pomiędzy bez",
+      "betw": "Pomiędzy z",
+      "empty": "Puste",
+      "nempty": "Niepuste",
+      "daily": "Dzienna",
+      "monthlyTicket": "Bilet miesięczny ( na cały miesiąc)",
+      "dailyTicket": "Bilet jednorazowy czasowy",
+      "duplicate": "Wniosek o duplikat karty",
+      "invoice": "Faktura VAT",
+      "card": "Wniosek o wydanie nośnika",
+      "unblock": "Wniosek o odblokowanie nośnika/konta"
+    },
+    "card_type": {
+      "city_card": "Karta PKZ / Gminna",
+      "emv_card": "Karta płatnicza (kredytowa / debetowa)",
+      "student_card": "Legitymacja studencka",
+      "complaint": "Zgłoszenie ogólne"
+    },
+    "document_type": {
+      "receipt": "Paragon",
+      "invoice": "Faktura VAT"
+    },
+    "downloadFile": {
+      "pdf": "Eksportuj do PDF",
+      "txt": "Eksportuj do Txt",
+      "html": "Eksportuj do HTML",
+      "csv": "Eksportuj do CSV",
+      "xlsx": "Eksportuj do XLSX"
+    },
+    "time_unit_type": {
+      "minutes": "Minuty",
+      "hours": "Godziny",
+      "days": "Dni"
+    },
+    "start_day": {
+      "monday": "Poniedziałek",
+      "tuesday": "Wtorek",
+      "wednesday": "Środa",
+      "thursday": "Czwartek",
+      "friday": "Piątek",
+      "saturday": "Sobota",
+      "sunday": "Niedziela"
+    },
+    "end_day": {
+      "monday": "Poniedziałek",
+      "tuesday": "Wtorek",
+      "wednesday": "Środa",
+      "thursday": "Czwartek",
+      "friday": "Piątek",
+      "saturday": "Sobota",
+      "sunday": "Niedziela"
+    },
+    "start_time": {
+      "00": "00:00",
+      "01": "01:00",
+      "02": "02:00",
+      "03": "03:00",
+      "04": "04:00",
+      "05": "05:00",
+      "06": "06:00",
+      "07": "07:00",
+      "08": "08:00",
+      "09": "09:00",
+      "10": "10:00",
+      "11": "11:00",
+      "12": "12:00",
+      "13": "13:00",
+      "14": "14:00",
+      "15": "15:00",
+      "16": "16:00",
+      "17": "17:00",
+      "18": "18:00",
+      "19": "19:00",
+      "20": "20:00",
+      "21": "21:00",
+      "22": "22:00",
+      "23": "23:00"
+    },
+    "end_time": {
+      "00": "00:00",
+      "01": "01:00",
+      "02": "02:00",
+      "03": "03:00",
+      "04": "04:00",
+      "05": "05:00",
+      "06": "06:00",
+      "07": "07:00",
+      "08": "08:00",
+      "09": "09:00",
+      "10": "10:00",
+      "11": "11:00",
+      "12": "12:00",
+      "13": "13:00",
+      "14": "14:00",
+      "15": "15:00",
+      "16": "16:00",
+      "17": "17:00",
+      "18": "18:00",
+      "19": "19:00",
+      "20": "20:00",
+      "21": "21:00",
+      "22": "22:00",
+      "23": "23:00"
+    }
+  },
+  "steps": {
+    "step": "Krok",
+    "label": {
+      "userData": "Dane podstawowe",
+      "choiceCard": "Wybierz nośnik",
+      "choiceCardAndTickets": "Wybierz nośnik i bilety",
+      "configTickets": "Skonfiguruj bilety",
+      "summary": "Podsumowanie",
+      "payment": "Płatność"
+    },
+    "chooseStatus": "Wybierz status"
+  },
+  "paymentMethod": "Metoda płatności",
+  "transactionDocument": "Dokument sprzedaży",
+  "permission": {
+    "card": {
+      "card": "Moduł nośników od klienta"
+    },
+    "ticket": {
+      "zone": "Moduł stref",
+      "line": "Moduł linii",
+      "tariff": "Moduł taryf",
+      "ticket": "Moduł biletów"
+    },
+    "wallet": {
+      "wallet": "Moduł portmonetki"
+    },
+    "cases": {
+      "case": "Moduł spraw klienta",
+      "case_list": "Moduł wszystkich spraw"
+    },
+    "customer": {
+      "customer": "Moduł bazy klientów"
+    },
+    "discount": {
+      "discount": "Moduł wszystkich zniżek"
+    },
+    "employee": {
+      "user": "Moduł administracji użytkowników",
+      "role": "Moduł administracji uprawnień"
+    },
+    "event": {
+      "my_events": "Moduł wydarzeń klienta"
+    },
+    "myticket": {
+      "my_ticket": "Moduł biletów klienta"
+    },
+    "myusers": {
+      "my_user": "Moduł podopiecznych klienta"
+    },
+    "order": {
+      "order": "Moduł historii transakcji"
+    },
+    "profile": {
+      "data": "Moduł zarządzania danymi klienta",
+      "status": "Moduł zarządzania statusem klienta",
+      "history": "Moduł historii zmian klienta",
+      "document": "Moduł zarządzania zniżką klienta",
+      "password": "Moduł zmiany hasła klienta"
+    },
+    "reports": {
+      "report": "Moduł raportów"
+    },
+    "tax": {
+      "tax": "Moduł zarządzania stawkami podatkowymi"
+    },
+    "paymentMethod": "Metoda płatności",
+    "transactionDocument": "Dokument sprzedaży",
+    "permission": {
+      "card": {
+        "card": "Moduł nośników od klienta"
+      },
+      "cases": {
+        "case": "Moduł spraw klienta",
+        "case_list": "Moduł wszystkich spraw"
+      },
+      "customer": {
+        "customer": "Moduł bazy klientów"
+      },
+      "discount": {
+        "discount": "Moduł wszystkich zniżek"
+      },
+      "employee": {
+        "user": "Moduł administracji użytkowników",
+        "role": "Moduł administracji uprawnień"
+      },
+      "event": {
+        "my_events": "Moduł wydarzeń klienta"
+      },
+      "myticket": {
+        "my_ticket": "Moduł biletów klienta"
+      },
+      "myusers": {
+        "my_user": "Moduł podopiecznych klienta"
+      },
+      "order": {
+        "order": "Moduł historii transakcji"
+      },
+      "profile": {
+        "data": "Moduł zarządzania danymi klienta",
+        "status": "Moduł zarządzania statusem klienta",
+        "history": "Moduł historii zmian klienta",
+        "document": "Moduł zarządzania zniżką klienta",
+        "password": "Moduł zmiany hasła klienta"
+      },
+      "reports": {
+        "report": "Moduł raportów"
+      },
+      "ticket": {
+        "zone": "Moduł zarządzania strefami",
+        "line": "Moduł zarządzania liniami"
+      },
+      "wallet": {
+        "wallet": "Moduł zarządzania portmonetką"
+      },
+      "tax": {
+        "tax": "Moduł zarządzania stawkami podatkowymi"
+      }
+    }
+  },
+  "tariffs": {
+    "generalInfo": "Informacje podstawowe"
+  }
+}

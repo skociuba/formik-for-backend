@@ -1,5 +1,5 @@
 import {useApiMutation} from '../../../hooks/api/useApiMutation';
-import {useForm} from '@/hooks/useForm';
+import {useForm} from '@/components/useForm';
 
 import {initialValues,exampleValidationSchema as validationSchema} from './pageModel';
 export const usePage = ({oldValues, handleSubmit}) => {

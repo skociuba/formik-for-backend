@@ -6,7 +6,7 @@ import Component from './component';
 const TodosComponent =() => {
   const router = useRouter();
   const handleSubmit = () => {
-    router.push('/example');
+    router.push('/customers');
   };
 
   return (
@@ -16,6 +16,7 @@ const TodosComponent =() => {
           handleSubmit,
         }}
       />
+      <button onClick={handleSubmit}>Submit</button>
          </div>
       );
 

@@ -4,7 +4,7 @@ import { Layout } from '@/components/Layouts/Example/Layout';
 const AddExampleComponent = dynamic(
   () =>
     import(
-      '@/components/PageComponents/AddExampleComponent/AddExampleComponent'
+      '@/components/PagesComponent/Customers/AddCustomers/AddExampleComponent'
     ).then((m) => m.default),
   {
     ssr: false,
@@ -16,7 +16,7 @@ const AddExamplePage = () =>{ return (
       title: 'Add',
       breakpoints: [
         { children: 'main', href: '/' },
-        { children: 'example', href: '/example' },
+        { children: 'customers', href: '/customers' },
       ],
       hideOnMobile: { title: true, subTitle: true },
     }}

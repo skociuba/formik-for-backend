@@ -45,6 +45,9 @@ const Nav = () => {
           <li className="p-4">
             <Link href="/example">Example</Link>
           </li>
+          <li className="p-4">
+            <Link href="/customers">Klienci</Link>
+          </li>
         
         </ul>
 
@@ -83,6 +86,11 @@ const Nav = () => {
               onClick={handleNav}
               className="p-4 text-4xl hover:text-gray-500">
               <Link href="/example">Example</Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-4xl hover:text-gray-500">
+              <Link href="/customers">Klienci</Link>
             </li>
           </ul>
         </div>

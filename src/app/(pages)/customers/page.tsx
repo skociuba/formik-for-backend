@@ -4,7 +4,7 @@ import { Layout } from '@/components/Layouts/Example/Layout';
 const Example = dynamic(
   () =>
     import(
-      '@/components/PageComponents/ExampleComponent/ExampleComponent'
+      '@/components/PagesComponent/Customers/Customers/Customers'
     ).then((m) => m.default),
   {
     ssr: false,

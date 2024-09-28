@@ -1,9 +1,9 @@
 import {useRouter} from 'next/navigation';
 
-import {useApiQuery} from './../../../hooks/api/useApiQuery';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
 export const usePage = () => {
-  const {data, isLoading, error} = useApiQuery({
-    route: 'TODOS',
+  const {data, isLoading, error, refetch} = useApiQuery({
+    route: 'CUSTOMERS',
   });
   const router = useRouter();
   return {
@@ -11,5 +11,6 @@ export const usePage = () => {
     isLoading,
     error,
     router,
+    refetch,
   };
 };

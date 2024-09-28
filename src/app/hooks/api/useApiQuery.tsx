@@ -39,5 +39,6 @@ export const useApiQuery = ({refresh, ...props}: UseApiQueryProps) => {
     useErrorBoundary: true,
   });
 
-  return {data: data, ...query};
+
+  return {data: data?.data, ...query};
 };

@@ -5,14 +5,14 @@ import Component from './component';
 import {useApiQuery} from '@/hooks/api/useApiQuery';
 function TodosComponent({id}: {id: string}) {
   const {data, isLoading, error} = useApiQuery({
-    route: 'TODO',
+    route: 'CUSTOMER',
     params: {
       id: id,
     },
   });
   const router = useRouter();
   const handleSubmit = () => {
-    router.push('/example');
+    router.push('/customers');
   };
 
   if (isLoading) {

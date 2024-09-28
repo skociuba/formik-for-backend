@@ -1,18 +1,18 @@
-import {useApiMutation} from '../../../hooks/api/useApiMutation';
-import {useForm} from '../../useForm';
-import {useApiQuery} from '../../../hooks/api/useApiQuery';
+import {useApiMutation} from'@/hooks/api/useApiMutation';
+import {useForm} from '@/components/useForm';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
 
 import {initialValues} from './pageModel';
 export const usePage = ({oldValues, handleSubmit, id}) => {
   const {data, isLoading, error} = useApiQuery({
-    route: 'TODO',
+    route: 'CUSTOMER',
     params: {
       id: id,
     },
   });
   const {mutate} = useApiMutation({
-    route: 'TODO_UPDATE',
-    method: 'PUT',
+    route: 'CUSTOMERS_EDIT',
+    method: 'POST',
     params: {
       id,
     },
@@ -24,6 +24,7 @@ export const usePage = ({oldValues, handleSubmit, id}) => {
       const sendValues = {...values};
       mutate(
         {
+          _method:'PUT',
           ...sendValues,
         },
         {

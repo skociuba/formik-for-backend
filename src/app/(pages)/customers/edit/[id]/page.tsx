@@ -1,5 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
+import React, { useEffect} from 'react';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
 import { Layout } from '@/components/Layouts/Example/Layout';
 const Example = dynamic(
   () =>
@@ -10,7 +12,20 @@ const Example = dynamic(
     ssr: false,
   },
 );
-const ExamplePage = ({params: {id}}: {params: {id: string}}) => { return (
+const ExamplePage = ({params: {id}}: {params: {id: string}}) => {
+  const {data, isLoading, refetch, isRefetching} = useApiQuery({
+    route: 'CUSTOMER',
+    params: {
+      id: id,
+    },
+
+  });
+  
+  useEffect(() => {
+    refetch()
+  }, [])
+  
+  return (
   <Layout
     {...{
       title: 'Edit',
@@ -21,7 +36,7 @@ const ExamplePage = ({params: {id}}: {params: {id: string}}) => { return (
       hideOnMobile: { title: true, subTitle: true },
     }}
   >
-    <Example id={id} />
+   {data && !isLoading && !isRefetching ? <Example oldValues={data} id={id} />:null}
   </Layout>
 );
 };

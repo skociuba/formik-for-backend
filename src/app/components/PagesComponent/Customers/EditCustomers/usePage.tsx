@@ -4,12 +4,7 @@ import {useApiQuery} from '@/hooks/api/useApiQuery';
 
 import {initialValues} from './pageModel';
 export const usePage = ({oldValues, handleSubmit, id}) => {
-  const {data, isLoading, error} = useApiQuery({
-    route: 'CUSTOMER',
-    params: {
-      id: id,
-    },
-  });
+
   const {mutate} = useApiMutation({
     route: 'CUSTOMERS_EDIT',
     method: 'POST',
@@ -39,9 +34,6 @@ export const usePage = ({oldValues, handleSubmit, id}) => {
   });
 
   return {
-    data,
-    isLoading,
-    error,
     form,
   };
 };

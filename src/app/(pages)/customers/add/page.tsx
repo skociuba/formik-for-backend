@@ -1,6 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
-import { Layout } from '@/components/Layouts/Example/Layout';
+
+import {Layout} from '@/components/Layouts/Example/Layout';
 const AddExampleComponent = dynamic(
   () =>
     import(
@@ -10,19 +11,17 @@ const AddExampleComponent = dynamic(
     ssr: false,
   },
 );
-const AddExamplePage = () =>{ return (
+const AddExamplePage = () => (
   <Layout
     {...{
       title: 'Add',
       breakpoints: [
-        { children: 'main', href: '/' },
-        { children: 'customers', href: '/customers' },
+        {children: 'main', href: '/'},
+        {children: 'customers', href: '/customers'},
       ],
-      hideOnMobile: { title: true, subTitle: true },
-    }}
-  >
+      hideOnMobile: {title: true, subTitle: true},
+    }}>
     <AddExampleComponent />
   </Layout>
 );
-};
 export default AddExamplePage;

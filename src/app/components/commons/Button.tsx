@@ -1,4 +1,4 @@
-import { clsxm } from '@/lib/clsxm';
+import {clsxm} from '@/lib/clsxm';
 
 export type ButtonProps = {
   fullWidth?: boolean;
@@ -17,7 +17,7 @@ export type ButtonProps = {
   disabled?: boolean;
   className?: string;
   handleClick?: (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => void | React.MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -49,13 +49,12 @@ export const Button = ({
     aria-label={label}
     onClick={handleClick}
     className={clsxm(
-      'box-border h-14 cursor-pointer px-6 leading-base md:text-base',
+      'leading-base box-border h-14 cursor-pointer px-6 md:text-base',
       rounded && 'rounded-xs',
       fullWidth && 'w-full',
       ButtonVariants[variant],
-      className
-    )}
-  >
+      className,
+    )}>
     {children}
   </button>
 );

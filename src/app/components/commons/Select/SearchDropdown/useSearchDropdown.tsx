@@ -1,9 +1,9 @@
-import { useFormikContext } from 'formik';
+import {useFormikContext} from 'formik';
 import useTranslation from 'next-translate/useTranslation';
-import { useEffect } from 'react';
-import { ChangeEvent, useState } from 'react';
+import {useEffect} from 'react';
+import {ChangeEvent, useState} from 'react';
 
-import { useAppStore } from '@/lib';
+import {useAppStore} from '@/lib';
 
 export type ValueType = string | number | readonly string[] | undefined;
 
@@ -18,28 +18,28 @@ export const useSearchDropdown = ({
   data,
   isFullName,
 }: UseSearchDropdown) => {
-  const { personalData } = useAppStore();
-  const { t } = useTranslation('form');
-  const { getFieldMeta, setFieldValue } = useFormikContext();
-  const { value, error } = getFieldMeta<ValueType>(name);
+  const {personalData} = useAppStore();
+  const {t} = useTranslation('form');
+  const {getFieldMeta, setFieldValue} = useFormikContext();
+  const {value, error} = getFieldMeta<ValueType>(name);
   const [search, setSearch] = useState<string>('');
   const [selected, setSelected] = useState<string | null>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+    const {value} = e.target;
     setSearch(value);
     setSelected(value);
   };
 
   const getFullName = (id: string, data: any) => {
-    const { profile } = data.find((item: any) => item.id === id);
+    const {profile} = data.find((item: any) => item.id === id);
     return profile.first_name + ' ' + profile.last_name;
   };
 
   const getOptionName = (option: any) => {
     const isOption = data
-      ? data.find(({ id }: { id: string }) => id === option)
+      ? data.find(({id}: {id: string}) => id === option)
       : null;
 
     return isFullName
@@ -68,7 +68,9 @@ export const useSearchDropdown = ({
       ? getFullName(option.id, data)
       : getTransactionName(option);
 
-    if (!chosen) return;
+    if (!chosen) {
+      return;
+    }
 
     setFieldValue(name, option.id);
     setSelected(chosen);

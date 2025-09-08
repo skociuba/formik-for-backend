@@ -1,8 +1,8 @@
-import { useFormikContext } from 'formik';
+import {useFormikContext} from 'formik';
 
-import { Without } from '@/lib/api';
+import {Without} from '@/lib/api';
 
-import { FormField, useFormField } from '@/components/commons/Form/FormField';
+import {FormField, useFormField} from '@/components/commons/Form/FormField';
 import Root, {
   SelectProps as RootProps,
   ValueType,
@@ -13,13 +13,13 @@ export type SelectProps = {
   handleChange?: (val: any) => void;
 } & Without<RootProps, 'onChange'>;
 
-export const Select = ({ className, handleChange, ...props }: SelectProps) => {
-  const { formFieldProps, childProps } = useFormField(props);
-  const { getFieldMeta, setFieldValue } = useFormikContext();
-  const { value, error } = getFieldMeta<ValueType>(props.name);
+export const Select = ({className, handleChange, ...props}: SelectProps) => {
+  const {formFieldProps, childProps} = useFormField(props);
+  const {getFieldMeta, setFieldValue} = useFormikContext();
+  const {value, error} = getFieldMeta<ValueType>(props.name);
 
   return (
-    <FormField {...{ ...formFieldProps, className: 'relative' }}>
+    <FormField {...{...formFieldProps, className: 'relative'}}>
       <Root
         {...{
           ...childProps,

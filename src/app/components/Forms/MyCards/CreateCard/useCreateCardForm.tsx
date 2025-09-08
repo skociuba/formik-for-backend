@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
-import { io } from 'socket.io-client';
+import {useEffect} from 'react';
+import {io} from 'socket.io-client';
 
-import { useApiMutation } from '@/hooks/api/useApiMutation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
 
-import { useForm } from '@/components/commons/Form/useForm';
-
-import { CreateCardFormProps } from './CreateCardForm';
+import {CreateCardFormProps} from './CreateCardForm';
 import {
   createCardValidationSchema,
   duplicateCardValidationSchema,
   initialValues,
 } from './CreateCardFormModel';
+
+import {useForm} from '@/components/commons/Form/useForm';
 
 export const useCreateCardForm = ({
   handleClose,
@@ -20,10 +20,10 @@ export const useCreateCardForm = ({
   isDuplicate,
   ...props
 }: CreateCardFormProps) => {
-  const { mutate, isLoading, errors } = useApiMutation(props);
+  const {mutate, isLoading, errors} = useApiMutation(props);
 
   const form = useForm({
-    initialValues: { ...initialValues, ...oldValues },
+    initialValues: {...initialValues, ...oldValues},
     validationSchema: isDuplicate
       ? duplicateCardValidationSchema
       : createCardValidationSchema,
@@ -33,15 +33,15 @@ export const useCreateCardForm = ({
         newNumber = values.number.replace(/\D/g, '').substring(1);
       }
       mutate(
-        { ...values, number: newNumber },
+        {...values, number: newNumber},
         {
-          onSuccess: ({ error }) => {
+          onSuccess: ({error}) => {
             if (!error) {
               handleSubmit();
               handleClose();
             }
           },
-        }
+        },
       );
     },
   });
@@ -51,7 +51,7 @@ export const useCreateCardForm = ({
       return;
     }
 
-    const socket = io('https://ps.centreoservice.com', { reconnection: true });
+    const socket = io('https://ps.centreoservice.com', {reconnection: true});
 
     socket.on('connect', () => {
       console.log('Connected!');
@@ -87,5 +87,5 @@ export const useCreateCardForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.values]);
 
-  return { form, errors, isLoading };
+  return {form, errors, isLoading};
 };

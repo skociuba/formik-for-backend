@@ -1,22 +1,22 @@
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
-import { useApiQuery } from '@/hooks/api/useApiQuery';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
 
 type UseTicketsListProps = {
   id?: string;
   access?: string;
 };
 
-export const useTicketsList = ({ id, access }: UseTicketsListProps) => {
+export const useTicketsList = ({id, access}: UseTicketsListProps) => {
   const router = useRouter();
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
   const [search, setSearch] = useState<string>('');
-  const { data, refetch, ...apiQuery } = useApiQuery({
+  const {data, refetch, ...apiQuery} = useApiQuery({
     route: access === 'admin' ? 'POK_TICKET_LIST' : 'TICKET_LIST',
-    params: { id: typeof router.query.id === 'string' ? router.query.id : '' },
-    values: { search },
+    params: {id: typeof router.query.id === 'string' ? router.query.id : ''},
+    values: {search},
   });
 
   const tickets = data ? data : [];

@@ -76,7 +76,7 @@
       "length": "Numer karty ma nieodpowiednią ilość znaków",
       "required_with": "Musisz dodać conajmniej jeden załącznik.",
       "current_password": "Nieprawidłowo wprowadzono aktualnie używane hasło.",
-      "pesel": { "invalid": "Niepoprawny numer PESEL" },
+      "pesel": {"invalid": "Niepoprawny numer PESEL"},
       "email": "Wprowadzono błędny adres e-mail",
       "integer": "Wprowadzono błędny numer telefonu",
       "uploaded": "Wystąpił błąd podczas przesyłania pliku",

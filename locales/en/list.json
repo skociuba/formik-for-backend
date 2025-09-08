@@ -83,7 +83,7 @@
       "name": "Nazwa strefy",
       "description": "Opis"
     },
-    "tarriff": { "name": "Nazwa taryfy" },
+    "tarriff": {"name": "Nazwa taryfy"},
     "transaction": {
       "number": "Numer transakcji",
       "created_at": "Data transakcji",

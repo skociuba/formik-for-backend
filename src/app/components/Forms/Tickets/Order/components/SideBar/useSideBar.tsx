@@ -1,10 +1,10 @@
-import { FormikContextType, FormikValues, useFormikContext } from 'formik';
-import { useEffect, useState } from 'react';
+import {FormikContextType, FormikValues, useFormikContext} from 'formik';
+import {useEffect, useState} from 'react';
 
-import { TicketType } from '@/components/commons/Cards/OrderTicketCard';
+import {TicketType} from '@/components/commons/Cards/OrderTicketCard';
 
 export const useSideBar = () => {
-  const { values, setFieldValue }: FormikContextType<FormikValues> =
+  const {values, setFieldValue}: FormikContextType<FormikValues> =
     useFormikContext();
   const [tickets, setTickets] = useState<TicketType[]>([]);
 
@@ -19,18 +19,18 @@ export const useSideBar = () => {
 
   const summaryPrice = values.item.reduce(
     (prev: number, current: TicketType) => (prev += Number(current.price)),
-    0
+    0,
   );
 
   useEffect(
     () =>
       setTickets([
         ...new Map<string, TicketType>(
-          values.item.map((item: TicketType) => [item.id, item])
+          values.item.map((item: TicketType) => [item.id, item]),
         ).values(),
       ]),
-    [values]
+    [values],
   );
 
-  return { values, summaryPrice, tickets, countTicket, removeTicket };
+  return {values, summaryPrice, tickets, countTicket, removeTicket};
 };

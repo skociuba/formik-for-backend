@@ -1,19 +1,18 @@
 import React from 'react';
 import SVG from 'react-inlinesvg';
 
-import { clsxm } from '@/lib/clsxm';
+import {clsxm} from '@/lib/clsxm';
+import {Skeleton} from '@/components/commons/Skeleton/Skeleton';
 
-import { Skeleton } from '@/components/commons/Skeleton/Skeleton';
+import {IconProps} from './IconModel';
 
-import { IconProps } from './IconModel';
-
-export const Icon = ({ name, className, ...delegated }: IconProps) => (
+export const Icon = ({name, className, ...delegated}: IconProps) => (
   <SVG
     {...{
       ...delegated,
       src: `/svg/${name}.svg`,
       className: clsxm('h-auto', className),
-      loader: <Skeleton {...{ height: 38 }} />,
+      loader: <Skeleton {...{height: 38}} />,
     }}
   />
 );

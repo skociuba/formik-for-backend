@@ -1,4 +1,4 @@
-import { clsxm } from '@/lib';
+import {clsxm} from '@/lib';
 
 type SelectOptionProps = {
   value: string;
@@ -11,12 +11,11 @@ export const SelectOption = ({
 }: SelectOptionProps) => (
   <div
     className={clsxm(
-      'border-t border-cloud text-sm first-of-type:border-t-0 md:text-base',
+      'border-cloud border-t text-sm first-of-type:border-t-0 md:text-base',
       'flex h-12 w-full cursor-pointer items-center overflow-hidden whitespace-nowrap bg-white px-5 capitalize',
-      'hover:bg-navy hover:text-white'
+      'hover:bg-navy hover:text-white',
     )}
-    onClick={handleSelectOptionClick}
-  >
+    onClick={handleSelectOptionClick}>
     {value}
   </div>
 );

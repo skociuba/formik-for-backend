@@ -3,15 +3,19 @@ export type ApiEndpointsType = {
   method: ('GET' | 'POST' | 'PUT' | 'DELETE')[];
 };
 
-export type ApiKeysType =  'CUSTOMERS' | 'CUSTOMERS_ADD' | "CUSTOMER" |"CUSTOMERS_EDIT"| "CUSTOMER_REMOVE";
+export type ApiKeysType =
+  | 'CUSTOMERS'
+  | 'CUSTOMERS_ADD'
+  | 'CUSTOMER'
+  | 'CUSTOMERS_EDIT'
+  | 'CUSTOMER_REMOVE';
 
 export const API_ENDPOINTS: {[key in ApiKeysType]: ApiEndpointsType} = {
-
-  CUSTOMERS:{
+  CUSTOMERS: {
     endpoint: `/api/customers`,
     method: ['GET'],
   },
-  CUSTOMER:{
+  CUSTOMER: {
     endpoint: `/api/customers/{id}`,
     method: ['GET'],
   },

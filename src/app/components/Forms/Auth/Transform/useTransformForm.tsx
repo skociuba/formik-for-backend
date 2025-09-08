@@ -1,32 +1,32 @@
-import { useApiMutation } from '@/hooks/api/useApiMutation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
 
-import { useForm } from '@/components/commons/Form/useForm';
-
-import { TransformFormType } from './TransformForm';
+import {TransformFormType} from './TransformForm';
 import {
   initialValues,
   transformValidationSchema as validationSchema,
 } from './TransformFormModel';
+
+import {useForm} from '@/components/commons/Form/useForm';
 
 export const useTransformForm = ({
   token,
   handleSubmit,
   ...props
 }: TransformFormType) => {
-  const { mutate, isLoading, error } = useApiMutation(props);
+  const {mutate, isLoading, error} = useApiMutation(props);
 
   const form = useForm({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       mutate(
-        { ...values, code: token },
+        {...values, code: token},
         {
-          onSuccess: ({ error }) => (error ? null : handleSubmit()),
-        }
+          onSuccess: ({error}) => (error ? null : handleSubmit()),
+        },
       );
     },
   });
 
-  return { form, error, isLoading };
+  return {form, error, isLoading};
 };

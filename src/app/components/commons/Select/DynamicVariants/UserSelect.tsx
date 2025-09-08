@@ -2,11 +2,12 @@ import {useRouter} from 'next/router';
 
 import {Without} from '@/lib/api';
 import {useApiQuery} from '@/hooks/api/useApiQuery';
+import {Skeleton} from '@/components/commons/Skeleton/Skeleton';
+
 import {
   Select,
   SelectProps,
 } from '@/components/commons/Form/Fields/Select/Select';
-import {Skeleton} from '@/components/commons/Skeleton/Skeleton';
 
 export const UserSelect = ({
   type,

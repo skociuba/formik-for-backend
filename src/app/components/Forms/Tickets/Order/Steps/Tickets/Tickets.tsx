@@ -1,15 +1,15 @@
-import { UseApiQueryProps } from '@/hooks/api/useApiQuery';
+import {UseApiQueryProps} from '@/hooks/api/useApiQuery';
+import {FormProps} from '@/components/Forms/@types/Form';
 
-import { CardSelect } from '@/components/commons/Form/Fields/Select/DynamicVariants/CardSelect';
-import { FormProps } from '@/components/Forms/@types/Form';
+import {ProposedTicketsList} from './components/ProposedTicketsList/ProposedTicketsList';
+import {TicketsList} from './components/TicketsList/TicketsList';
+import {useTickets} from './useTickets';
 
-import { ProposedTicketsList } from './components/ProposedTicketsList/ProposedTicketsList';
-import { TicketsList } from './components/TicketsList/TicketsList';
-import { useTickets } from './useTickets';
+import {CardSelect} from '@/components/commons/Form/Fields/Select/DynamicVariants/CardSelect';
 
 export type TicketsProps = Pick<FormProps, 'access'> & UseApiQueryProps;
 
-export const Tickets = ({ access, ...props }: TicketsProps) => {
+export const Tickets = ({access, ...props}: TicketsProps) => {
   const {
     toggleTicket,
     countTicket,
@@ -19,17 +19,17 @@ export const Tickets = ({ access, ...props }: TicketsProps) => {
     status,
     tickets,
     maxTickets,
-  } = useTickets({ ...{ ...props, access } });
+  } = useTickets({...{...props, access}});
 
   return (
-    <div className='pb-[50px] md:pb-0'>
-      <div className='mt-2 mb-8'>
+    <div className="pb-[50px] md:pb-0">
+      <div className="mb-8 mt-2">
         <CardSelect
-          name='card'
-          label='choiceCard'
-          placeholder='card'
-          isClear
-          clearLabel='empty'
+          name="card"
+          label="choiceCard"
+          placeholder="card"
+          isClear={true}
+          clearLabel="empty"
           access={access}
         />
       </div>

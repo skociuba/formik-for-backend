@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { validationSchema, ValidationSchemaType } from '@/lib/validation';
+import {validationSchema, ValidationSchemaType} from '@/lib/validation';
 
 export const createCardValidationSchema = Yup.object({
   user: validationSchema.global.required,

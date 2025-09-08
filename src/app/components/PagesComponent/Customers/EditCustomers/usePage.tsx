@@ -1,10 +1,9 @@
-import {useApiMutation} from'@/hooks/api/useApiMutation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
 import {useForm} from '@/components/useForm';
 import {useApiQuery} from '@/hooks/api/useApiQuery';
 
 import {initialValues} from './pageModel';
 export const usePage = ({oldValues, handleSubmit, id}) => {
-
   const {mutate} = useApiMutation({
     route: 'CUSTOMERS_EDIT',
     method: 'POST',
@@ -19,7 +18,7 @@ export const usePage = ({oldValues, handleSubmit, id}) => {
       const sendValues = {...values};
       mutate(
         {
-          _method:'PUT',
+          _method: 'PUT',
           ...sendValues,
         },
         {

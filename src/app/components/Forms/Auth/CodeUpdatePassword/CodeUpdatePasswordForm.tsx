@@ -1,10 +1,11 @@
-import { CodeInput } from '@/components/commons/Form/Fields/CodeInput';
-import { SubmitButton } from '@/components/commons/Form/Fields/SubmitButton';
-import { Form } from '@/components/commons/Form/Form';
-import { FormMessage } from '@/components/commons/Form/FormMessage';
-import { FormProps } from '@/components/Forms/@types/Form';
+import {FormProps} from '@/components/Forms/@types/Form';
 
-import { useUpdatePasswordForm } from './useCodeUpdatePassword';
+import {useUpdatePasswordForm} from './useCodeUpdatePassword';
+
+import {CodeInput} from '@/components/commons/Form/Fields/CodeInput';
+import {SubmitButton} from '@/components/commons/Form/Fields/SubmitButton';
+import {Form} from '@/components/commons/Form/Form';
+import {FormMessage} from '@/components/commons/Form/FormMessage';
 
 export type CodeUpdatePasswordFormType = {
   token: string;
@@ -16,19 +17,19 @@ export type CodeUpdatePasswordFormType = {
 export const CodeUpdatePasswordForm = ({
   ...props
 }: CodeUpdatePasswordFormType) => {
-  const { form, isLoading, error } = useUpdatePasswordForm({ ...props });
+  const {form, isLoading, error} = useUpdatePasswordForm({...props});
 
   return (
-    <Form {...{ form, className: 'flex flex-col gap-3' }}>
-      <div className='mb-8 lg:mb-12'>
-        <CodeInput label='codeType' name='code' fields={5} />
+    <Form {...{form, className: 'flex flex-col gap-3'}}>
+      <div className="mb-8 lg:mb-12">
+        <CodeInput label="codeType" name="code" fields={5} />
       </div>
       <SubmitButton
-        type='submit'
-        label='confirmChangePassword'
+        type="submit"
+        label="confirmChangePassword"
         loading={isLoading}
       />
-      <FormMessage content={error} type='error' />
+      <FormMessage content={error} type="error" />
     </Form>
   );
 };

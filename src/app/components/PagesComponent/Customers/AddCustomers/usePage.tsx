@@ -1,8 +1,19 @@
+import {useRouter} from 'next/navigation';
+
 import {useApiMutation} from '@/hooks/api/useApiMutation';
 import {useForm} from '@/components/useForm';
-import {useRouter} from 'next/navigation';
-import {initialValues,exampleValidationSchema as validationSchema} from './pageModel';
-export const usePage = ({oldValues, handleSubmit}: {oldValues: any, handleSubmit: any}) => {
+
+import {
+  initialValues,
+  exampleValidationSchema as validationSchema,
+} from './pageModel';
+export const usePage = ({
+  oldValues,
+  handleSubmit,
+}: {
+  oldValues: any;
+  handleSubmit: any;
+}) => {
   const router = useRouter();
   const {mutate} = useApiMutation({
     route: 'CUSTOMERS_ADD',
@@ -19,9 +30,7 @@ export const usePage = ({oldValues, handleSubmit}: {oldValues: any, handleSubmit
         },
         {
           onSuccess: () => {
-
             router.push('/customers');
-
           },
         },
       );

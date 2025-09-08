@@ -1,11 +1,10 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { clsxm } from '@/lib/clsxm';
-
-import { Link, LinkProps } from '@/components/commons/Link';
+import {clsxm} from '@/lib/clsxm';
+import {Link, LinkProps} from '@/components/commons/Link';
 
 export type BreakpointsListProps = {
-  breakpoints?: ({ href?: string; dynamic?: boolean } & Pick<
+  breakpoints?: ({href?: string; dynamic?: boolean} & Pick<
     LinkProps,
     'children'
   >)[];
@@ -16,7 +15,7 @@ export const BreakpointsList = ({
   breakpoints,
   hideOnMobile,
 }: BreakpointsListProps) => {
-  const { t } = useTranslation('common');
+  const {t} = useTranslation('common');
 
   if (!breakpoints) {
     return null;
@@ -25,17 +24,15 @@ export const BreakpointsList = ({
   return (
     <p
       className={clsxm(
-        'text-primary flex gap-1 pb-[14px] text-base',
-        hideOnMobile && 'hidden'
-      )}
-    >
-      {breakpoints.map(({ href, children, dynamic }, index) => (
+        'flex gap-1 pb-[14px] text-base text-primary',
+        hideOnMobile && 'hidden',
+      )}>
+      {breakpoints.map(({href, children, dynamic}, index) => (
         <span
           key={`${href}-${index}`}
-          className={clsxm('flex gap-1', !href && 'text-gray')}
-        >
+          className={clsxm('flex gap-1', !href && 'text-gray')}>
           {href ? (
-            <Link {...{ href, className: 'text-navy' }}>
+            <Link {...{href, className: 'text-navy'}}>
               {dynamic ? children : t(`panel.links.${children}`)}
             </Link>
           ) : dynamic ? (
@@ -44,7 +41,7 @@ export const BreakpointsList = ({
             t(`panel.links.${children}`)
           )}
           {index + 1 < breakpoints.length ? (
-            <span className='text-gray'>&gt;</span>
+            <span className="text-gray">&gt;</span>
           ) : null}
         </span>
       ))}

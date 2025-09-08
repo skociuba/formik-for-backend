@@ -35,7 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 1. jeżeli chcesz pominąć jakiś folder w URL daj go w nawiasy okrągłe()
 2. w layout można dać footer i header, a jeżeli masz nested i style dla nested mają być inne to w folderze macierzystym twożysz layout file też
-3. 
+3.

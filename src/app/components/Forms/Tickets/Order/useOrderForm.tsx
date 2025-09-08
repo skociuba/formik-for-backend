@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
-import { updateTime } from '@/lib/helpers';
-import { useApiMutation } from '@/hooks/api/useApiMutation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
 
-import { useForm } from '@/components/commons/Form/useForm';
-
-import { OrderFormProps } from './OrderForm';
+import {OrderFormProps} from './OrderForm';
 import {
   initialValues,
   ItemType,
   orderValidationSchema as validationSchema,
 } from './OrderFormModel';
-import { Configurator } from './Steps/Configurator/Configurator';
-import { Payment } from './Steps/Payment/Payment';
-import { Tickets } from './Steps/Tickets/Tickets';
+import {Configurator} from './Steps/Configurator/Configurator';
+import {Payment} from './Steps/Payment/Payment';
+import {Tickets} from './Steps/Tickets/Tickets';
+
+import {useForm} from '@/components/commons/Form/useForm';
+import {updateTime} from '@/lib/helpers';
 
 export const useOrderForm = ({
   cardId,
@@ -23,14 +23,14 @@ export const useOrderForm = ({
   ...props
 }: OrderFormProps) => {
   const [step, setStep] = useState<number>(0);
-  const { mutate, isLoading, errors } = useApiMutation({
+  const {mutate, isLoading, errors} = useApiMutation({
     ...props,
     method: 'POST',
   });
 
   const form = useForm({
     validationSchema: validationSchema[step],
-    initialValues: { ...initialValues, card: cardId || '' },
+    initialValues: {...initialValues, card: cardId || ''},
     onSubmit: (values) => {
       if (step === 0 || (access === 'admin' && step === 1)) {
         setStep((prev) => prev + 1);
@@ -44,19 +44,19 @@ export const useOrderForm = ({
             })),
           },
           {
-            onSuccess: ({ error, data }) =>
-              error ? null : handleSubmit({ data, values }),
-          }
+            onSuccess: ({error, data}) =>
+              error ? null : handleSubmit({data, values}),
+          },
         );
       }
     },
   });
 
   const stepComponents = [
-    <Tickets key='tickets' {...{ ...ticketsQuery, access }} />,
-    <Configurator key='configurator' />,
-    <Payment key='payment' />,
+    <Tickets key="tickets" {...{...ticketsQuery, access}} />,
+    <Configurator key="configurator" />,
+    <Payment key="payment" />,
   ];
 
-  return { step, setStep, stepComponents, form, isLoading, errors };
+  return {step, setStep, stepComponents, form, isLoading, errors};
 };

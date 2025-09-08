@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 
 const useOnClickOutside = (ref: any, handler: any) => {
   useEffect(() => {
@@ -17,4 +17,4 @@ const useOnClickOutside = (ref: any, handler: any) => {
   }, [ref, handler]);
 };
 
-export { useOnClickOutside };
+export {useOnClickOutside};

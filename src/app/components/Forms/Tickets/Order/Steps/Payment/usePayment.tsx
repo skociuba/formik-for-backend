@@ -1,9 +1,9 @@
-import { FormikContextType, FormikValues, useFormikContext } from 'formik';
+import {FormikContextType, FormikValues, useFormikContext} from 'formik';
 import useTranslation from 'next-translate/useTranslation';
 
 export const usePayment = () => {
-  const { values }: FormikContextType<FormikValues> = useFormikContext();
-  const { t } = useTranslation('form');
+  const {values}: FormikContextType<FormikValues> = useFormikContext();
+  const {t} = useTranslation('form');
 
-  return { values, t };
+  return {values, t};
 };

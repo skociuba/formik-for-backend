@@ -1,21 +1,21 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { useApiMutation } from '@/hooks/api/useApiMutation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
 
-import { useForm } from '@/components/commons/Form/useForm';
-
-import { RefundCaseFormProps } from './RefundCaseForm';
+import {RefundCaseFormProps} from './RefundCaseForm';
 import {
   initialValues,
   refundCaseValidationSchema as validationSchema,
 } from './RefundCaseFormModel';
 
+import {useForm} from '@/components/commons/Form/useForm';
+
 export const useRefundCaseForm = ({
   handleClose,
   handleReload,
 }: RefundCaseFormProps) => {
-  const { t } = useTranslation('common');
-  const { mutate, isLoading, error } = useApiMutation({
+  const {t} = useTranslation('common');
+  const {mutate, isLoading, error} = useApiMutation({
     route: 'PROFILE_MY_CASES_REFUND',
     method: 'POST',
   });
@@ -25,7 +25,7 @@ export const useRefundCaseForm = ({
     validationSchema,
     onSubmit: async (values) => {
       mutate(values, {
-        onSuccess: ({ error }) => {
+        onSuccess: ({error}) => {
           if (!error) {
             handleClose();
             handleReload();
@@ -35,5 +35,5 @@ export const useRefundCaseForm = ({
     },
   });
 
-  return { t, form, error, isLoading };
+  return {t, form, error, isLoading};
 };

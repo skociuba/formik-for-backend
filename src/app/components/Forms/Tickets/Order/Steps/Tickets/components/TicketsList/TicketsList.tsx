@@ -1,13 +1,14 @@
 import Skeleton from 'react-loading-skeleton';
 
-import { Button } from '@/components/commons/Button';
+import {Button} from '@/components/commons/Button';
+
+import {useTicketsList} from './useTicketsList';
+
 import {
   OrderTicketCard,
   TicketType,
 } from '@/components/commons/Cards/OrderTicketCard';
 import SearchInput from '@/components/commons/Form/Ui/SearchInput';
-
-import { useTicketsList } from './useTicketsList';
 
 export type TicketsListProps = {
   toggleTicket: (action: 'add' | 'remove', id: string) => void;
@@ -23,30 +24,29 @@ export const TicketsList = ({
   setType,
   ...props
 }: TicketsListProps) => {
-  const { tickets, t, isLoading, status, search, setSearch, isRefetching } =
+  const {tickets, t, isLoading, status, search, setSearch, isRefetching} =
     useTicketsList(props);
 
   return (
     <>
-      <div className='flex justify-between'>
-        <p className='text-2xl font-bold'>Wszystkie bilety</p>
+      <div className="flex justify-between">
+        <p className="text-2xl font-bold">Wszystkie bilety</p>
         <Button
-          variant='quaternary'
-          className='h-8 p-0'
+          variant="quaternary"
+          className="h-8 p-0"
           handleClick={() => {
             setSearch('');
             setType();
-          }}
-        >
-          <p className='hidden font-bold text-navy md:block'>
+          }}>
+          <p className="text-navy hidden font-bold md:block">
             Pokaż proponowane
           </p>
         </Button>
       </div>
-      <div className='mt-6 mb-8'>
+      <div className="mb-8 mt-6">
         <SearchInput
-          name='search'
-          placeholder='searchTicket'
+          name="search"
+          placeholder="searchTicket"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onBlur={(e) => setSearch(e.target.value)}
@@ -54,15 +54,14 @@ export const TicketsList = ({
         />
       </div>
       <Button
-        variant='secondary'
-        fullWidth
-        className='mb-5 -mt-3 md:hidden'
-        handleClick={() => setSearch('')}
-      >
+        variant="secondary"
+        fullWidth={true}
+        className="-mt-3 mb-5 md:hidden"
+        handleClick={() => setSearch('')}>
         {t('showAll')}
       </Button>
       {isLoading || isRefetching || status !== 'success' || !tickets ? (
-        <Skeleton {...{ count: 10, height: 50 }} />
+        <Skeleton {...{count: 10, height: 50}} />
       ) : (
         tickets.map((item: TicketType) => (
           <OrderTicketCard
@@ -73,7 +72,7 @@ export const TicketsList = ({
               count: countTicket(item.id),
               ticket_type: item.ticket.ticket_type,
               discounts: item.ticket.discount
-                ? item.ticket.discount.map(({ value }: any) => value)
+                ? item.ticket.discount.map(({value}: any) => value)
                 : [],
               handleAdd: () => toggleTicket('add', item.id),
               handleRemove: () => toggleTicket('remove', item.id),

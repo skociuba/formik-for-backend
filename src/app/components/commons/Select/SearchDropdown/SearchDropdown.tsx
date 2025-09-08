@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
-import { clsxm } from '@/lib';
-import { ApiKeysType } from '@/hooks/api/apiEndpoints';
-import { useApiQuery } from '@/hooks/api/useApiQuery';
+import {ApiKeysType} from '@/hooks/api/apiEndpoints';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
+import {Icon} from '@/components/commons/Icon/Icon';
+import {Skeleton} from '@/components/commons/Skeleton/Skeleton';
 
-import { SelectOption } from '@/components/commons/Form/Fields/Select/SelectOption';
-import { FormField, useFormField } from '@/components/commons/Form/FormField';
-import { Icon } from '@/components/commons/Icon/Icon';
-import { Skeleton } from '@/components/commons/Skeleton/Skeleton';
+import {useSearchDropdown} from './useSearchDropdown';
 
-import { useSearchDropdown } from './useSearchDropdown';
+import {FormField, useFormField} from '@/components/commons/Form/FormField';
+import {SelectOption} from '@/components/commons/Form/Fields/Select/SelectOption';
+import {clsxm} from '@/lib';
 
 type SearchDropdownProps = {
   name: string;
@@ -38,7 +38,7 @@ const SearchDropdown = ({
   customFilterQuery,
 }: SearchDropdownProps) => {
   const [respData, setRespData] = useState(null);
-  const { formFieldProps } = useFormField({ placeholder, label, name });
+  const {formFieldProps} = useFormField({placeholder, label, name});
   const {
     error,
     search,
@@ -49,13 +49,13 @@ const SearchDropdown = ({
     handleSearch,
     setIsOpen,
     t,
-  } = useSearchDropdown({ data: respData, name, isFullName });
+  } = useSearchDropdown({data: respData, name, isFullName});
 
-  const { data, status, refetch } = useApiQuery({
+  const {data, status, refetch} = useApiQuery({
     route,
     values: userId
-      ? { user: userId }
-      : { [customFilterQuery ? customFilterQuery : name]: search },
+      ? {user: userId}
+      : {[customFilterQuery ? customFilterQuery : name]: search},
     params: userId
       ? {
           user: userId,
@@ -77,42 +77,40 @@ const SearchDropdown = ({
       <div
         className={clsxm(
           'overlay hidden',
-          isOpen && 'fixed inset-0 z-10 block'
+          isOpen && 'fixed inset-0 z-10 block',
         )}
         onClick={handleClickOutside}
       />
-      <FormField {...{ ...formFieldProps, className: 'relative' }}>
-        <div data-select-name={name} className='relative w-full'>
+      <FormField {...{...formFieldProps, className: 'relative'}}>
+        <div data-select-name={name} className="relative w-full">
           <div
             className={clsxm(
-              'relative flex h-12 items-center justify-between overflow-hidden whitespace-nowrap rounded-xs border capitalize',
+              'rounded-xs relative flex h-12 items-center justify-between overflow-hidden whitespace-nowrap border capitalize',
               selected ? 'text-navy' : 'text-gray',
               error ? 'border-error' : 'border-cloud',
-              className
+              className,
             )}
-            onClick={() => setIsOpen(true)}
-          >
+            onClick={() => setIsOpen(true)}>
             <input
-              type='text'
+              type="text"
               name={name}
               value={selected ? selected : ''}
               placeholder={t(`label.${placeholder ? placeholder : label}`)}
-              className='block w-full border-none px-9 text-base outline-none'
+              className="block w-full border-none px-9 text-base outline-none"
               onChange={handleSearch}
             />
-            <div className='absolute left-1.5 flex h-10 w-7 cursor-pointer items-center justify-center bg-white'>
-              <Icon name='magnifier' />
+            <div className="absolute left-1.5 flex h-10 w-7 cursor-pointer items-center justify-center bg-white">
+              <Icon name="magnifier" />
             </div>
-            <div className='absolute right-0 flex h-10 w-10 cursor-pointer items-center justify-center bg-white'>
-              <Icon name='chevron' />
+            <div className="absolute right-0 flex h-10 w-10 cursor-pointer items-center justify-center bg-white">
+              <Icon name="chevron" />
             </div>
           </div>
           <div
             className={clsxm(
-              'mt-0.5 max-h-96 w-auto min-w-full overflow-y-auto border border-cloud shadow-md',
-              isOpen ? 'absolute z-50' : 'hidden'
-            )}
-          >
+              'border-cloud mt-0.5 max-h-96 w-auto min-w-full overflow-y-auto border shadow-md',
+              isOpen ? 'absolute z-50' : 'hidden',
+            )}>
             {isClear ? (
               <SelectOption
                 value={t(`options.${clearLabel}`)}

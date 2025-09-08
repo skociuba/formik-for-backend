@@ -4,12 +4,7 @@ export const firstSectionContent = {
 };
 export const secondSectionContent = {
   title: 'Title',
-  description: [
-    `first item`,
-    `second item`,
-    `third item`,
-   
-  ],
+  description: [`first item`, `second item`, `third item`],
 };
 export const heroContent = {
   title: `Example Text`,

@@ -1,12 +1,12 @@
-import { useApiMutation } from '@/hooks/api/useApiMutation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
 
-import { useForm } from '@/components/commons/Form/useForm';
-
-import { CodeUpdatePasswordFormType } from './CodeUpdatePasswordForm';
+import {CodeUpdatePasswordFormType} from './CodeUpdatePasswordForm';
 import {
   codeUpdatePasswordValidationSchema as validationSchema,
   initialValues,
 } from './CodeUpdatePasswordFormModel';
+
+import {useForm} from '@/components/commons/Form/useForm';
 
 export const useUpdatePasswordForm = ({
   token,
@@ -16,20 +16,20 @@ export const useUpdatePasswordForm = ({
   handleSubmit,
   ...props
 }: CodeUpdatePasswordFormType) => {
-  const { mutate, isLoading, error } = useApiMutation(props);
+  const {mutate, isLoading, error} = useApiMutation(props);
 
   const form = useForm({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
       mutate(
-        { ...values, token, email, password, password_confirmation },
+        {...values, token, email, password, password_confirmation},
         {
-          onSuccess: ({ error }) => (error ? null : handleSubmit()),
-        }
+          onSuccess: ({error}) => (error ? null : handleSubmit()),
+        },
       );
     },
   });
 
-  return { form, error, isLoading };
+  return {form, error, isLoading};
 };

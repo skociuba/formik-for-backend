@@ -373,8 +373,8 @@
       "title": "Przekształć konto",
       "content": "Witaj w systemie Mera. Konto zostanie przekształcone na niezależne konto i odpięte od konta głównego."
     },
-    "contact": { "title": "Kontakt" },
-    "otherCases": { "title": "Inne sprawy" }
+    "contact": {"title": "Kontakt"},
+    "otherCases": {"title": "Inne sprawy"}
   },
   "panel": {
     "hello": "Witaj",

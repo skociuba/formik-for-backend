@@ -1,18 +1,17 @@
-import { FormikContextType, FormikValues, useFormikContext } from 'formik';
-import { useEffect } from 'react';
+import {FormikContextType, FormikValues, useFormikContext} from 'formik';
+import {useEffect} from 'react';
 
-import { convertDate, generateTime, getDateData } from '@/lib/helpers';
-
-import { TicketType } from '@/components/commons/Cards/OrderTicketCard';
+import {convertDate, generateTime, getDateData} from '@/lib/helpers';
+import {TicketType} from '@/components/commons/Cards/OrderTicketCard';
 
 export const useConfigurator = () => {
-  const { values, setFieldValue }: FormikContextType<FormikValues> =
+  const {values, setFieldValue}: FormikContextType<FormikValues> =
     useFormikContext();
 
   const updateTicket = (
     itemIndex: number,
     value: Date | [Date | null, Date | null] | null,
-    type: string
+    type: string,
   ) => {
     if (!(value instanceof Date)) {
       return;
@@ -21,15 +20,15 @@ export const useConfigurator = () => {
     return setFieldValue('item', [
       ...values.item.map((item: TicketType, index: number) =>
         itemIndex === index
-          ? { ...item, activation_date: setActivationDate(value, type) }
-          : item
+          ? {...item, activation_date: setActivationDate(value, type)}
+          : item,
       ),
     ]);
   };
 
   const setActivationDate = (value: Date, type: string) => {
     if (type === 'monthly') {
-      const { date } = getDateData(value);
+      const {date} = getDateData(value);
       return `01-${(date.getMonth() + 1)
         .toString()
         .padStart(2, '0')}-${date.getFullYear()} 00:00`;
@@ -48,20 +47,20 @@ export const useConfigurator = () => {
   };
 
   const getExludeDates = (max_months: string, max_days: string) => {
-    let excludes: { start: Date; end: Date }[] = [];
+    let excludes: {start: Date; end: Date}[] = [];
     for (let i = 0; i <= Number(max_months); i++) {
       const startDate = new Date();
       startDate.setDate(Number(max_days));
       const endDate = new Date(
         startDate.getFullYear(),
         startDate.getMonth() + i + 1,
-        0
+        0,
       );
 
       startDate.setMonth(startDate.getMonth() + i);
 
       if (endDate.getDate() > Number(max_days)) {
-        excludes = [...excludes, { start: startDate, end: endDate }];
+        excludes = [...excludes, {start: startDate, end: endDate}];
       }
     }
 
@@ -72,7 +71,7 @@ export const useConfigurator = () => {
     activation_date: string,
     validity: number,
     type: string,
-    max_days: string
+    max_days: string,
   ) => {
     if (activation_date === '') {
       return '';
@@ -81,14 +80,14 @@ export const useConfigurator = () => {
     const additionalTime = generateTime(type, validity);
 
     if (type === 'monthly') {
-      const { day: activation_day, date } = getDateData(activation_date);
+      const {day: activation_day, date} = getDateData(activation_date);
       if (activation_day > Number(max_days)) {
         date.setMonth(date.getMonth() + 1);
       }
       const firstDayOfNextMonth = new Date(
         date.getFullYear(),
         date.getMonth() + 1,
-        0
+        0,
       );
 
       const year = date.getFullYear();
@@ -103,12 +102,9 @@ export const useConfigurator = () => {
         .toString()
         .padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
     } else {
-      const { year, month, day, hours, minutes } = getDateData(
-        activation_date,
-        {
-          ...additionalTime,
-        }
-      );
+      const {year, month, day, hours, minutes} = getDateData(activation_date, {
+        ...additionalTime,
+      });
 
       return `${day.toString().padStart(2, '0')}-${month
         .toString()
@@ -119,7 +115,7 @@ export const useConfigurator = () => {
   };
 
   const getActiveDate = (activation_date: string, max_days: string) => {
-    const { day, date } = getDateData(activation_date);
+    const {day, date} = getDateData(activation_date);
 
     if (day > Number(max_days)) {
       date.setMonth(date.getMonth() + 1);
@@ -137,7 +133,7 @@ export const useConfigurator = () => {
         ...item,
         activation_date: getActiveDate(
           item.activation_date,
-          item.ticket.first_days
+          item.ticket.first_days,
         ),
       })),
     ]);

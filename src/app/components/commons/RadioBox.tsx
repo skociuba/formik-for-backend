@@ -49,9 +49,7 @@ export const RadioBox = ({
               className,
             )}
           />
-          <span className="checkmark absolute left-0 top-0">
-            &nbsp;
-          </span>
+          <span className="checkmark absolute left-0 top-0">&nbsp;</span>
           {children}
         </label>
       </div>

@@ -1,24 +1,25 @@
-import { locales } from '../../../../../i18n'
-import useTranslation from 'next-translate/useTranslation'
-import setLanguage from 'next-translate/setLanguage'
+import useTranslation from 'next-translate/useTranslation';
+import setLanguage from 'next-translate/setLanguage';
+
+import {locales} from '../../../../../i18n';
 
 export default function ChangeLanguage() {
+  const {lang} = useTranslation();
 
-    const { lang } = useTranslation()
+  console.log(lang);
 
-    console.log( lang )
+  const langs = [];
 
-    let langs = []
-
-    for(let l of locales){
-        if( l !== lang ){
-            langs.push(<button  key={l} onClick={async () => await setLanguage(l)}> { l.toUpperCase() } </button>)
-        }
+  for (const l of locales) {
+    if (l !== lang) {
+      langs.push(
+        <button key={l} onClick={async () => await setLanguage(l)}>
+          {' '}
+          {l.toUpperCase()}{' '}
+        </button>,
+      );
     }
-
-    return (
-        <div>
-            { langs }
-        </div>
-    );
   }
+
+  return <div>{langs}</div>;
+}

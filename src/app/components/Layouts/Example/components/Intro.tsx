@@ -1,16 +1,15 @@
-import { clsxm } from '@/lib/clsxm';
+import {clsxm} from '@/lib/clsxm';
+import {Button, ButtonProps} from '@/components/commons/Button';
+import {Link, LinkProps} from '@/components/commons/Link';
+import {Skeleton} from '@/components/commons/Skeleton/Skeleton';
 
-import { Button, ButtonProps } from '@/components/commons/Button';
-import { Link, LinkProps } from '@/components/commons/Link';
-import { Skeleton } from '@/components/commons/Skeleton/Skeleton';
-
-import { BreakpointsList, BreakpointsListProps } from './BreakpointsList';
+import {BreakpointsList, BreakpointsListProps} from './BreakpointsList';
 
 export type IntroProps = {
   title: string;
   dynamicTitle?: string;
   subTitle?: string;
-  button?: { href?: string } & Pick<
+  button?: {href?: string} & Pick<
     ButtonProps,
     'children' | 'className' | 'handleClick'
   >;
@@ -22,7 +21,7 @@ export type IntroProps = {
     link?: boolean;
     breakpoints?: boolean;
   };
-  dynamic?: { status: string; isLoading: boolean };
+  dynamic?: {status: string; isLoading: boolean};
 } & Pick<BreakpointsListProps, 'breakpoints'>;
 
 export const Intro = ({
@@ -36,43 +35,40 @@ export const Intro = ({
 }: IntroProps) => {
   if (dynamic && dynamic.status !== 'success' && dynamic.isLoading) {
     return (
-      <div className='flex flex-col gap-1'>
-        <Skeleton {...{ width: 300, height: 44 }} />
-        <Skeleton {...{ width: 200, height: 24 }} />
+      <div className="flex flex-col gap-1">
+        <Skeleton {...{width: 300, height: 44}} />
+        <Skeleton {...{width: 200, height: 24}} />
       </div>
     );
   }
 
   return (
-    <div className='flex flex-col justify-between gap-6 md:flex-row'>
+    <div className="flex flex-col justify-between gap-6 md:flex-row">
       <div>
         <BreakpointsList
-          {...{ breakpoints, hideOnMobile: hideOnMobile?.breakpoints }}
+          {...{breakpoints, hideOnMobile: hideOnMobile?.breakpoints}}
         />
         <p
           className={clsxm(
-            'text-primary text-2xl md:text-lg md:leading-lg',
-            hideOnMobile?.title && 'hidden md:block'
-          )}
-        >
+            'md:leading-lg text-2xl text-primary md:text-lg',
+            hideOnMobile?.title && 'hidden md:block',
+          )}>
           {title}
         </p>
         {subTitle ? (
           <p
             className={clsxm(
-              'mt-2 text-gray md:mt-4',
-              hideOnMobile?.subTitle && 'hidden md:block'
-            )}
-          >
+              'text-gray mt-2 md:mt-4',
+              hideOnMobile?.subTitle && 'hidden md:block',
+            )}>
             {subTitle}
           </p>
         ) : null}
         {link ? (
           <Link
             href={link.href}
-            className={hideOnMobile?.link ? 'hidden md:block' : ''}
-          >
-            <p className='mt-2 text-navy md:mt-4'>{link.children}</p>
+            className={hideOnMobile?.link ? 'hidden md:block' : ''}>
+            <p className="text-navy mt-2 md:mt-4">{link.children}</p>
           </Link>
         ) : null}
       </div>
@@ -82,12 +78,11 @@ export const Intro = ({
             {button.href ? (
               <Link
                 href={button.href}
-                className={hideOnMobile?.button ? 'hidden md:block' : 'block'}
-              >
-                <Button fullWidth>{button.children}</Button>
+                className={hideOnMobile?.button ? 'hidden md:block' : 'block'}>
+                <Button fullWidth={true}>{button.children}</Button>
               </Link>
             ) : (
-              <Button handleClick={button.handleClick} fullWidth>
+              <Button handleClick={button.handleClick} fullWidth={true}>
                 {button.children}
               </Button>
             )}

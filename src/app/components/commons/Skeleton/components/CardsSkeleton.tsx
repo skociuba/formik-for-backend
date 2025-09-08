@@ -1,14 +1,14 @@
-import { SkeletonProps } from 'react-loading-skeleton';
+import {SkeletonProps} from 'react-loading-skeleton';
 
-import { useScreen } from '@/hooks/useScreen';
+import {Skeleton} from '@/components/commons/Skeleton/Skeleton';
 
-import { Skeleton } from '@/components/commons/Skeleton/Skeleton';
+import {useScreen} from '@/hooks/useScreen';
 
-export const CardsSkeleton = ({ count = 3 }: Pick<SkeletonProps, 'count'>) => {
-  const { isMdUp } = useScreen();
+export const CardsSkeleton = ({count = 3}: Pick<SkeletonProps, 'count'>) => {
+  const {isMdUp} = useScreen();
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <Skeleton
         {...{
           count,

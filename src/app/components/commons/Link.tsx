@@ -1,4 +1,4 @@
-import { default as NextLink, LinkProps as NextLinkProps } from 'next/link';
+import {default as NextLink, LinkProps as NextLinkProps} from 'next/link';
 import React from 'react';
 
 export type LinkProps = {
@@ -9,7 +9,7 @@ export type LinkProps = {
 } & React.ComponentPropsWithRef<'a'>;
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ children, href, openNewTab, nextLinkProps, ...rest }, ref) => {
+  ({children, href, openNewTab, nextLinkProps, ...rest}, ref) => {
     const isNewTab =
       openNewTab !== undefined
         ? openNewTab
@@ -24,9 +24,9 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
     }
 
     return (
-      <a ref={ref} rel='noopener noreferrer' href={href} {...rest}>
+      <a ref={ref} rel="noopener noreferrer" href={href} {...rest}>
         {children}
       </a>
     );
-  }
+  },
 );

@@ -1,8 +1,9 @@
 'use client';
 import dynamic from 'next/dynamic';
-import React, { useEffect} from 'react';
+import React, {useEffect} from 'react';
+
 import {useApiQuery} from '@/hooks/api/useApiQuery';
-import { Layout } from '@/components/Layouts/Example/Layout';
+import {Layout} from '@/components/Layouts/Example/Layout';
 const Example = dynamic(
   () =>
     import(
@@ -18,27 +19,29 @@ const ExamplePage = ({params: {id}}: {params: {id: string}}) => {
     params: {
       id: id,
     },
-
   });
-  
+
   useEffect(() => {
-    refetch()
-  }, [])
-  
+    refetch();
+  }, []);
+
   return (
-  <Layout
-    {...{
-      title: 'Edit',
-      breakpoints: [
-        { children: 'main', href: '/' },
-        { children: 'customers', href: '/customers' },
-      ],
-      hideOnMobile: { title: true, subTitle: true },
-    }}
-  >
-   {data && !isLoading && !isRefetching ? <Example oldValues={data} id={id} />:null}
-  </Layout>
-);
+    <Layout
+      {...{
+        title: 'Edit',
+        breakpoints: [
+          {children: 'main', href: '/'},
+          {children: 'customers', href: '/customers'},
+        ],
+        hideOnMobile: {title: true, subTitle: true},
+      }}>
+      {data && !isLoading && !isRefetching ? (
+        <Example oldValues={data} id={id} />
+      ) : (
+        <></>
+      )}
+    </Layout>
+  );
 };
 
 export default ExamplePage;

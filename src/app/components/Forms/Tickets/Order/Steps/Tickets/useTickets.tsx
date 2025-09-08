@@ -1,26 +1,26 @@
-import { FormikContextType, FormikValues, useFormikContext } from 'formik';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import {FormikContextType, FormikValues, useFormikContext} from 'formik';
+import {useRouter} from 'next/router';
+import {useEffect, useState} from 'react';
 
-import { convertDate } from '@/lib/helpers';
-import { useApiQuery } from '@/hooks/api/useApiQuery';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
 
-import { TicketType } from '@/components/commons/Cards/OrderTicketCard';
+import {TicketsProps} from './Tickets';
 
-import { TicketsProps } from './Tickets';
+import {convertDate} from '@/lib/helpers';
+import {TicketType} from '@/components/commons/Cards/OrderTicketCard';
 
 export const useTickets = (props: TicketsProps) => {
   const router = useRouter();
-  const { values, setFieldValue }: FormikContextType<FormikValues> =
+  const {values, setFieldValue}: FormikContextType<FormikValues> =
     useFormikContext();
-  const { data, ...apiQuery } = useApiQuery(props);
+  const {data, ...apiQuery} = useApiQuery(props);
   const [search, setSearch] = useState<string>('');
   const [type, setType] = useState<'proposed' | 'all'>('proposed');
   const [tickets, setTickets] = useState<TicketType[]>([]);
   const [maxTickets, setMaxTickets] = useState<number>(0);
-  const { data: all } = useApiQuery({
+  const {data: all} = useApiQuery({
     route: props.access === 'admin' ? 'POK_TICKET_LIST' : 'TICKET_LIST',
-    params: { id: typeof router.query.id === 'string' ? router.query.id : '' },
+    params: {id: typeof router.query.id === 'string' ? router.query.id : ''},
   });
   const [globalTicketCount, setGlobalTicketCount] = useState<number>(0);
 
@@ -29,11 +29,11 @@ export const useTickets = (props: TicketsProps) => {
 
     if (action === 'remove') {
       const indexToRemove = values.item.findIndex(
-        (ticket: any) => ticket.id === id
+        (ticket: any) => ticket.id === id,
       );
 
       const ticketsToRemove = values.item.filter(
-        (ticket: any) => ticket.id === id
+        (ticket: any) => ticket.id === id,
       );
 
       if (indexToRemove !== -1) {
@@ -47,7 +47,7 @@ export const useTickets = (props: TicketsProps) => {
       setFieldValue('item', [
         ...values.item.filter((ticket: any) => ticket.id !== id),
         ...ticketsToRemove.filter(
-          (_ticket: any, index: number) => index !== ticketsToRemove.length - 1
+          (_ticket: any, index: number) => index !== ticketsToRemove.length - 1,
         ),
       ]);
     } else {
@@ -88,7 +88,7 @@ export const useTickets = (props: TicketsProps) => {
     }
 
     const filteredTickets = data?.tickets
-      ? data?.tickets?.filter(({ name }: TicketType) => name.includes(search))
+      ? data?.tickets?.filter(({name}: TicketType) => name.includes(search))
       : [];
     return setTickets(filteredTickets);
   }, [data, search]);

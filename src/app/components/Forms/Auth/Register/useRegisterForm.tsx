@@ -1,13 +1,13 @@
 import * as Yup from 'yup';
 
-import { validationSchema } from '@/lib/validation';
-import { useApiMutation } from '@/hooks/api/useApiMutation';
-import { useApiQuery } from '@/hooks/api/useApiQuery';
+import {validationSchema} from '@/lib/validation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
+import {FormProps} from '@/components/Forms/@types/Form';
 
-import { useForm } from '@/components/commons/Form/useForm';
-import { FormProps } from '@/components/Forms/@types/Form';
+import {initialValues, registerValidationSchema} from './RegisterFormModel';
 
-import { initialValues, registerValidationSchema } from './RegisterFormModel';
+import {useForm} from '@/components/commons/Form/useForm';
 
 export type Statement = {
   id: string;
@@ -22,10 +22,10 @@ export type Statement = {
   description: string;
 };
 
-export const useRegisterForm = ({ handleSubmit, ...props }: FormProps) => {
-  const { mutate, isLoading, errors } = useApiMutation(props);
+export const useRegisterForm = ({handleSubmit, ...props}: FormProps) => {
+  const {mutate, isLoading, errors} = useApiMutation(props);
 
-  const { data, isLoading: areStatementsLoading } = useApiQuery({
+  const {data, isLoading: areStatementsLoading} = useApiQuery({
     route: 'ADMINISTRATION_CONTENT',
     values: {
       statement: 'registration_form',
@@ -44,7 +44,7 @@ export const useRegisterForm = ({ handleSubmit, ...props }: FormProps) => {
       : validationSchema.global.checkbox;
   });
 
-  const customAgreementsSchema = Yup.object({ ...customAgreements });
+  const customAgreementsSchema = Yup.object({...customAgreements});
 
   const newValidation = Yup.object({
     ...registerValidationSchema.fields,
@@ -57,19 +57,19 @@ export const useRegisterForm = ({ handleSubmit, ...props }: FormProps) => {
 
   statements.forEach(
     (statement: Statement, index: number) =>
-      (agreementsInitialValues[`customAgreement${index + 1}`] = '0')
+      (agreementsInitialValues[`customAgreement${index + 1}`] = '0'),
   );
 
   const form = useForm({
-    initialValues: { ...initialValues, ...agreementsInitialValues },
+    initialValues: {...initialValues, ...agreementsInitialValues},
     validationSchema: newValidation,
     checkPassword: true,
     onSubmit: async (values) => {
       mutate(values, {
-        onSuccess: ({ error }) => (error ? null : handleSubmit()),
+        onSuccess: ({error}) => (error ? null : handleSubmit()),
       });
     },
   });
 
-  return { form, errors, isLoading, statements, areStatementsLoading };
+  return {form, errors, isLoading, statements, areStatementsLoading};
 };

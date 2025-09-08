@@ -3,7 +3,7 @@ import {useRouter} from 'next/navigation';
 
 import Component from './component';
 
-const TodosComponent =() => {
+const TodosComponent = () => {
   const router = useRouter();
   const handleSubmit = () => {
     router.push('/customers');
@@ -17,9 +17,8 @@ const TodosComponent =() => {
         }}
       />
       <button onClick={handleSubmit}>Submit</button>
-         </div>
-      );
-
-}
+    </div>
+  );
+};
 
 export default TodosComponent;

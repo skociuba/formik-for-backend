@@ -1,41 +1,39 @@
-import { useApiMutation } from '@/hooks/api/useApiMutation';
-import { useApiQuery } from '@/hooks/api/useApiQuery';
-
-import { useForm } from '@/components/commons/Form/useForm';
-import { FormProps } from '@/components/Forms/@types/Form';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
+import {useApiQuery} from '@/hooks/api/useApiQuery';
+import {FormProps} from '@/components/Forms/@types/Form';
 
 import {
   initialValues,
   roleCreateValidationSchema as validationSchema,
 } from './CreateRoleFormModel';
 
+import {useForm} from '@/components/commons/Form/useForm';
+
 export const useCreateRoleForm = ({
   handleSubmit,
   oldValues,
   ...props
 }: FormProps) => {
-  const { mutate, isLoading, error } = useApiMutation(props);
-  const { data } = useApiQuery({
+  const {mutate, isLoading, error} = useApiMutation(props);
+  const {data} = useApiQuery({
     route: 'POK_PERMISSIONS',
   });
 
-  const permissions: { id: string; name: string }[] = data ? data : [];
+  const permissions: {id: string; name: string}[] = data ? data : [];
 
   const form = useForm({
-    initialValues: oldValues
-      ? { ...initialValues, ...oldValues }
-      : initialValues,
+    initialValues: oldValues ? {...initialValues, ...oldValues} : initialValues,
     validationSchema,
     onSubmit: async (values) => {
       mutate(values, {
-        onSuccess: ({ error, data }) => {
+        onSuccess: ({error, data}) => {
           if (!error) {
-            handleSubmit({ data });
+            handleSubmit({data});
           }
         },
       });
     },
   });
 
-  return { form, error, isLoading, permissions };
+  return {form, error, isLoading, permissions};
 };

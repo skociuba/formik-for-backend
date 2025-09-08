@@ -1,12 +1,12 @@
-import { useApiMutation } from '@/hooks/api/useApiMutation';
+import {useApiMutation} from '@/hooks/api/useApiMutation';
 
-import { useForm } from '@/components/commons/Form/useForm';
-
-import { NewPasswordFormType } from './NewPasswordForm';
+import {NewPasswordFormType} from './NewPasswordForm';
 import {
   initialValues,
   newPasswordValidationSchema as validationSchema,
 } from './NewPasswordFormModel';
+
+import {useForm} from '@/components/commons/Form/useForm';
 
 export const useNewPasswordForm = ({
   token,
@@ -14,7 +14,7 @@ export const useNewPasswordForm = ({
   handleSubmit,
   ...props
 }: NewPasswordFormType) => {
-  const { mutate, isLoading, error } = useApiMutation(props);
+  const {mutate, isLoading, error} = useApiMutation(props);
 
   const form = useForm({
     initialValues,
@@ -22,13 +22,13 @@ export const useNewPasswordForm = ({
     checkPassword: true,
     onSubmit: async (values) => {
       mutate(
-        { ...values, token, email },
+        {...values, token, email},
         {
-          onSuccess: ({ error }) => (error ? null : handleSubmit()),
-        }
+          onSuccess: ({error}) => (error ? null : handleSubmit()),
+        },
       );
     },
   });
 
-  return { form, error, isLoading };
+  return {form, error, isLoading};
 };

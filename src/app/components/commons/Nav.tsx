@@ -30,8 +30,10 @@ const Nav = () => {
       style={{backgroundColor: `${color}`}}
       className="fixed left-0 top-0 z-10 w-full duration-300 ease-in">
       <div className="m-auto flex max-w-[1240px] items-center justify-between p-4 text-white">
-        <h1 style={{color: `${textColor}`}} className="mt-3 text-5xl font-bold">
-        </h1>
+        <h1
+          style={{color: `${textColor}`}}
+          className="mt-3 text-5xl font-bold"
+        />
         <ul style={{color: `${textColor}`}} className="hidden sm:flex">
           <li className="p-4">
             <Link href="/#home">Home</Link>
@@ -45,7 +47,6 @@ const Nav = () => {
           <li className="p-4">
             <Link href="/customers">Klienci</Link>
           </li>
-        
         </ul>
 
         {/* Mobile Button */}

@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react';
+import {useRef, useState} from 'react';
 
-import { useOnClickOutside } from '@/hooks/useOnClickOutside';
+import {useOnClickOutside} from '@/hooks/useOnClickOutside';
 
-import { SelectProps, ValueType } from './Select';
+import {SelectProps, ValueType} from './Select';
 
-export const useSelect = ({ options, value, onChange }: SelectProps) => {
+export const useSelect = ({options, value, onChange}: SelectProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -12,7 +12,7 @@ export const useSelect = ({ options, value, onChange }: SelectProps) => {
 
   const getOptionName = (option: ValueType) => {
     const isOption = options
-      ? options.find(({ value }) => value === option)
+      ? options.find(({value}) => value === option)
       : null;
 
     return isOption?.name || ' ';

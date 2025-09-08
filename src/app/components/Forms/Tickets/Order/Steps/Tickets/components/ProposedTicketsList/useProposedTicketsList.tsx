@@ -1,12 +1,12 @@
 import useTranslation from 'next-translate/useTranslation';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 export type UseProposedTicketsList = {
   tickets: any[];
 };
 
-export const useProposedTicketsList = ({ tickets }: UseProposedTicketsList) => {
-  const { t } = useTranslation('common');
+export const useProposedTicketsList = ({tickets}: UseProposedTicketsList) => {
+  const {t} = useTranslation('common');
   const [items, setItems] = useState<any[]>(tickets);
   const [search, setSearch] = useState<string>('');
 
@@ -16,7 +16,7 @@ export const useProposedTicketsList = ({ tickets }: UseProposedTicketsList) => {
     }
 
     const filteredTickets = tickets
-      ? tickets?.filter(({ ticket: { name } }: any) => name.includes(search))
+      ? tickets?.filter(({ticket: {name}}: any) => name.includes(search))
       : [];
     return setItems(filteredTickets);
     // eslint-disable-next-line react-hooks/exhaustive-deps

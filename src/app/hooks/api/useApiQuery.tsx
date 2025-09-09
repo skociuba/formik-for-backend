@@ -21,7 +21,6 @@ export const useApiQuery = ({refresh, ...props}: UseApiQueryProps) => {
     queryKey: [route, id, ...paramsArr],
     queryFn: () =>
       fetchRequest({
-        refresh,
         method: 'GET',
         ...props,
       }).then((fetchData) => {
@@ -36,7 +35,6 @@ export const useApiQuery = ({refresh, ...props}: UseApiQueryProps) => {
         }
         return fetchData;
       }),
-    useErrorBoundary: true,
   });
 
   return {data: data?.data, ...query};

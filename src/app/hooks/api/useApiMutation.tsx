@@ -28,7 +28,7 @@ export const useApiMutation = ({...props}: UseApiMutationProps) => {
   const [error, setError] = useState<string | null>(); //TODO to delete
   const [errors, setErrors] = useState<{[key: string]: string} | undefined>();
 
-  const {mutate, isLoading} = useMutation({
+  const {mutate} = useMutation({
     mutationFn: (values: ValueType) => {
       setError(null);
       return fetchRequest({
@@ -52,8 +52,8 @@ export const useApiMutation = ({...props}: UseApiMutationProps) => {
         })
         .catch((err) => err);
     },
-    useErrorBoundary: true,
+ 
   });
 
-  return {mutate, isLoading, error, errors};
+  return {mutate, error, errors};
 };

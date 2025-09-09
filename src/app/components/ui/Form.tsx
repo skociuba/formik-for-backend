@@ -1,12 +1,12 @@
 import {FormikContextType, FormikProvider, FormikValues} from 'formik';
 import {PropsWithChildren} from 'react';
 
-import {useFormType} from './useForm';
+
 
 export type FormType = {
   className?: string;
   form: FormikContextType<FormikValues>;
-} & Pick<useFormType, 'children'> &
+} & Pick<any, 'children'> &
   PropsWithChildren;
 
 export const Form = ({children, className, form}: FormType) => (

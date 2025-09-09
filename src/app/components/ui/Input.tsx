@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 import {ComponentProps, useState} from 'react';
 
 import {clsxm} from '@/lib/clsxm';
-import {Icon} from '@/components/commons/Icon/Icon';
+
 
 export type InputProps = {
   className?: string;
@@ -39,10 +39,7 @@ const Input = ({className, error, type, placeholder, ...props}: InputProps) => {
               ? 'after:absolute after:right-2 after:top-1/2 after:h-px after:w-8 after:-translate-y-1/2 after:-rotate-45 after:bg-black'
               : '',
           )}>
-          <Icon
-            name="eye"
-            className="absolute right-3 top-1/2 -translate-y-1/2"
-          />
+          
         </button>
       )}
     </div>

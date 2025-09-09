@@ -9,6 +9,9 @@ import {usePage} from './usePage';
 const Component = ({...props}) => {
   const {form} = usePage({
     ...props,
+    oldValues: props.oldValues,
+    handleSubmit: props.handleSubmit,
+    id: props.id,
   });
   return (
     <div>

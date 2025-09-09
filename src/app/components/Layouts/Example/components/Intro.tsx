@@ -1,7 +1,7 @@
 import {clsxm} from '@/lib/clsxm';
 import {Button, ButtonProps} from '@/components/commons/Button';
 import {Link, LinkProps} from '@/components/commons/Link';
-import {Skeleton} from '@/components/commons/Skeleton/Skeleton';
+
 
 import {BreakpointsList, BreakpointsListProps} from './BreakpointsList';
 
@@ -36,8 +36,7 @@ export const Intro = ({
   if (dynamic && dynamic.status !== 'success' && dynamic.isLoading) {
     return (
       <div className="flex flex-col gap-1">
-        <Skeleton {...{width: 300, height: 44}} />
-        <Skeleton {...{width: 200, height: 24}} />
+      
       </div>
     );
   }

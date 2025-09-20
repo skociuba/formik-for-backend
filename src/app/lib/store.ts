@@ -3,8 +3,6 @@ import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 import {devtools} from 'zustand/middleware';
 
-
-
 const cookieStorage = {
   getItem: (name: string) => Cookies.get(name),
   setItem: (name: string, value: string) =>

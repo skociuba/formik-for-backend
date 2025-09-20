@@ -1,8 +1,6 @@
 import {FormikContextType, FormikProvider, FormikValues} from 'formik';
 import {PropsWithChildren} from 'react';
 
-
-
 export type FormType = {
   className?: string;
   form: FormikContextType<FormikValues>;

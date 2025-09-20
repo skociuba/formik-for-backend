@@ -52,7 +52,6 @@ export const useApiMutation = ({...props}: UseApiMutationProps) => {
         })
         .catch((err) => err);
     },
- 
   });
 
   return {mutate, error, errors};

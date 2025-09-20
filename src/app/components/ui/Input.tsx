@@ -3,7 +3,6 @@ import {ComponentProps, useState} from 'react';
 
 import {clsxm} from '@/lib/clsxm';
 
-
 export type InputProps = {
   className?: string;
   error?: string;
@@ -38,9 +37,8 @@ const Input = ({className, error, type, placeholder, ...props}: InputProps) => {
             isPasswordType
               ? 'after:absolute after:right-2 after:top-1/2 after:h-px after:w-8 after:-translate-y-1/2 after:-rotate-45 after:bg-black'
               : '',
-          )}>
-          
-        </button>
+          )}
+        />
       )}
     </div>
   );

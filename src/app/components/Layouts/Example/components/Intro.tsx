@@ -2,7 +2,6 @@ import {clsxm} from '@/lib/clsxm';
 import {Button, ButtonProps} from '@/components/commons/Button';
 import {Link, LinkProps} from '@/components/commons/Link';
 
-
 import {BreakpointsList, BreakpointsListProps} from './BreakpointsList';
 
 export type IntroProps = {
@@ -34,11 +33,7 @@ export const Intro = ({
   dynamic,
 }: IntroProps) => {
   if (dynamic && dynamic.status !== 'success' && dynamic.isLoading) {
-    return (
-      <div className="flex flex-col gap-1">
-      
-      </div>
-    );
+    return <div className="flex flex-col gap-1" />;
   }
 
   return (

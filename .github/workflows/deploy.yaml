@@ -35,5 +35,5 @@ jobs:
             git pull origin master
             npm install --production
             npm run build
-            PORT=3000 pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
+            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
             pm2 save

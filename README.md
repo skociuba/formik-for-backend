@@ -1,10 +1,9 @@
-
-Logując się na serwer komendą ssh root@85.215.128.5 
+Logując się na serwer komendą ssh root@85.215.128.5
 
 rm -rf /var/www/frontend → usuwa tylko folder z frontendem.
 rm -rf /var/www/backend → usuwa tylko folder z backendem.
 
-Wchodzę do bazy -  sudo mysql -u root
+Wchodzę do bazy - sudo mysql -u root
 DROP DATABASE laravel_db; usuwam bazę
 EXIT - wychodze z bazy
 
@@ -28,7 +27,6 @@ Klonowanie repo
 cd /var/www/frontend
 git clone git@github.com:skociuba/formik-for-backend.git
 
-
 cd /var/www/backend
 git clone git@github.com:skociuba/laravel-boilerplate.git
 
@@ -39,17 +37,12 @@ sudo add-apt-repository ppa:ondrej/php -y
 sudo apt update
 sudo apt install -y php8.2 php8.2-cli php8.2-fpm php8.2-mysql php8.2-mbstring php8.2-xml php8.2-bcmath unzip curl composer
 
-
 Instalacja zależności Laravel
 
 cd /var/www/backend/laravel-boilerplate
 composer install --no-dev --optimize-autoloader
 cp .env.example .env
 php artisan key:generate
-
-
-
-
 
 Problem z wersjami PHP
 
@@ -58,7 +51,6 @@ composer update --no-dev --optimize-autoloader
 
 cp .env.example .env
 php artisan key:generate
-
 
 Instalacja MySQL
 
@@ -70,28 +62,23 @@ na pytania odpowiadam
 
 Validate password: N (lub Y jeśli chcesz silne hasła)
 
-
 Remove anonymous users: Y
-
 
 Disallow root login remotely: Y
 
-
 Remove test database: Y
 
-
 Reload privileges: Y
-
 
 Tworzenie bazy i użytkownika:
 sudo mysql -u root - wchodzę jako rot user
 CREATE DATABASE laravel_db;
 CREATE USER 'laravel_user'@'localhost' IDENTIFIED BY 'haslo123';
-GRANT ALL PRIVILEGES ON laravel_db.* TO 'laravel_user'@'localhost';
+GRANT ALL PRIVILEGES ON laravel_db.\* TO 'laravel_user'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 Konfiguracja .env w Laravel:
-nano .env na be i uzupełniam 
+nano .env na be i uzupełniam
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -106,33 +93,32 @@ php artisan route:clear
 php artisan view:clear
 php artisan config:cache
 
-
-
 odpalenie bez pm2
 php artisan serve --host=85.215.128.5 --port=8000
 
 Użycie pm2
- zastopowanie starych pm2
+zastopowanie starych pm2
 pm2 stop all
 pm2 delete all
 pm2 save
 odpalenie pm2
 pm2 start "php artisan serve --host=0.0.0.0 --port=8000" --name laravel-be
-zasejwowanie  - potwierdź
+zasejwowanie - potwierdź
 pm2 save
 pm2 startup
 
 FE
 cd /var/www/frontend/formik-for-backend
- npm install
+npm install
 nano .env sprawdzenie czy mamy zmienną (mamy , dziwne sprawdź )
 npm run build
 PORT=3000 pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
-zasejwowanie  - potwierdź
+zasejwowanie - potwierdź
 pm2 save
 pm2 startup
 
-na be wcześniej twożyłem  config/cors.php teraz na serwerze nie było z tym problemu
+na be wcześniej twożyłem config/cors.php teraz na serwerze nie było z tym problemu
+
 <?php
 return [
     'paths' => ['api/*', 'sanctum/csrf-cookie'],

@@ -31,11 +31,19 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/frontend/formik-for-backend
-            git pull origin master
-            npm install --production
-            npm run build
-            pm2 stop nextjs-app || true
-            pm2 delete nextjs-app || true
-            pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
-            pm2 save
+              cd /var/www/frontend/formik-for-backend
+              git fetch origin
+              git reset --hard origin/master
+
+              # Tworzymy plik .env.production.local z GitHub Variables
+              echo "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" > .env.production.local
+              echo "NODE_ENV=production" >> .env.production.local
+
+              npm install
+              npm run build
+
+              pm2 stop nextjs-app || true
+              pm2 delete nextjs-app || true
+              pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
+              pm2 save
+

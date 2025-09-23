@@ -44,7 +44,7 @@ const Customers = () => {
   return (
     <div className="ml-8 mt-24 min-h-screen">
       <Button handleClick={handleAdd()} className="mb-3">
-        DODAJ
+        Add
       </Button>
 
       {data?.length && (

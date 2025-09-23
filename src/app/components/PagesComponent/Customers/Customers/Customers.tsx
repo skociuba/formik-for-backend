@@ -43,8 +43,7 @@ const Customers = () => {
 
   return (
     <div className="ml-8 mt-24 min-h-screen">
-      <Button handleClick={handleAdd()} className="mb-3">
-        Add
+      <Button handleClick={handleAdd()} className="mb-3">Hello
       </Button>
 
       {data?.length && (

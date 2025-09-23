@@ -6,44 +6,66 @@ on:
       - master
 
 jobs:
-  deploy:
+  build:
+    name: Build Docker Image
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
         with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v1.1.0
+          username: ${{ secrets.DOCKER_USER || 'your-docker-username' }}
+          password: ${{ secrets.DOCKER_PASSWORD || 'your-docker-password' }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-              cd /var/www/frontend/formik-for-backend
-              git fetch origin
-              git reset --hard origin/master
+          context: .
+          file: Dockerfile.prod
+          push: true
+          tags: sebastiankociuba/formik-for-backend:latest
 
-              # Tworzymy plik .env.production.local z GitHub Variables
-              echo "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" > .env.production.local
-              echo "NODE_ENV=production" >> .env.production.local
+  # deploy:
+  #   runs-on: ubuntu-latest
 
-              npm install
-              npm run build
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v4
 
-              pm2 stop nextjs-app || true
-              pm2 delete nextjs-app || true
-              pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
-              pm2 save
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 18
 
+  #     - name: Install dependencies
+  #       run: npm install
+
+  #     - name: Build project
+  #       run: npm run build
+
+  #     - name: Deploy to server
+  #       uses: appleboy/ssh-action@v1.1.0
+  #       with:
+  #         host: ${{ secrets.SSH_HOST }}
+  #         username: ${{ secrets.SSH_USER }}
+  #         key: ${{ secrets.SSH_KEY }}
+  #         script: |
+  #             cd /var/www/frontend/formik-for-backend
+  #             git fetch origin
+  #             git reset --hard origin/master
+
+  #             # Tworzymy plik .env.production.local z GitHub Variables
+  #             echo "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" > .env.production.local
+  #             echo "NODE_ENV=production" >> .env.production.local
+
+  #             npm install
+  #             npm run build
+
+  #             pm2 stop nextjs-app || true
+  #             pm2 delete nextjs-app || true
+  #             pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
+  #             pm2 save

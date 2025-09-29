@@ -43,7 +43,7 @@ jobs:
             script: |
               set -e
 
-              cd /var/www/frontend/formik-for-backend
+              cd /var/www/frontend
 
               # Pobranie najnowszego obrazu
               sudo docker pull sebastiankociuba/formik-for-backend:latest

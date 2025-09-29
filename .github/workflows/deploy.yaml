@@ -28,43 +28,35 @@ jobs:
           push: true
           tags: sebastiankociuba/formik-for-backend:latest
 
-  # deploy:
-  #   runs-on: ubuntu-latest
+  deploy:
+      name: Deploy Frontend Container
+      needs: [build]
+      runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Checkout repo
-  #       uses: actions/checkout@v4
+      steps:
+        - name: Deploy via SSH
+          uses: appleboy/ssh-action@v0.1.10
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USER }}
+            key: ${{ secrets.SSH_KEY }}
+            script: |
+              set -e
 
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 18
+              cd /var/www/frontend/formik-for-backend
 
-  #     - name: Install dependencies
-  #       run: npm install
+              # Pobranie najnowszego obrazu
+              sudo docker pull sebastiankociuba/formik-for-backend:latest
 
-  #     - name: Build project
-  #       run: npm run build
+              # Zatrzymanie i usunięcie starego kontenera
+              sudo docker stop nextjs-app || true
+              sudo docker rm nextjs-app || true
 
-  #     - name: Deploy to server
-  #       uses: appleboy/ssh-action@v1.1.0
-  #       with:
-  #         host: ${{ secrets.SSH_HOST }}
-  #         username: ${{ secrets.SSH_USER }}
-  #         key: ${{ secrets.SSH_KEY }}
-  #         script: |
-  #             cd /var/www/frontend/formik-for-backend
-  #             git fetch origin
-  #             git reset --hard origin/master
+              # Uruchomienie nowego kontenera
+              sudo docker run -d --restart unless-stopped \
+                -p 3000:3000 \
+                --env NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} \
+                --env NODE_ENV=production \
+                --name nextjs-app \
+                sebastiankociuba/formik-for-backend:latest
 
-  #             # Tworzymy plik .env.production.local z GitHub Variables
-  #             echo "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" > .env.production.local
-  #             echo "NODE_ENV=production" >> .env.production.local
-
-  #             npm install
-  #             npm run build
-
-  #             pm2 stop nextjs-app || true
-  #             pm2 delete nextjs-app || true
-  #             pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
-  #             pm2 save

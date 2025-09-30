@@ -53,10 +53,9 @@ jobs:
               sudo docker rm nextjs-app || true
 
               # Uruchomienie nowego kontenera
-              sudo docker run -d --restart unless-stopped \
-                -p 3000:3000 \
-                --env NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} \
-                --env NODE_ENV=production \
-                --name nextjs-app \
-                sebastiankociuba/formik-for-backend:latest
+              docker run -d \
+              --env NEXT_PUBLIC_API_URL=/api \
+              --env NODE_ENV=production \
+              --name nextjs-app \
+               sebastiankociuba/formik-for-backend:latest
 

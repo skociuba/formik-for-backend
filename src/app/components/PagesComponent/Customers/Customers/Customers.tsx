@@ -40,7 +40,7 @@ const Customers = () => {
   if (error) {
     return <div>An error has occurred: {error.message}</div>;
   }
-
+console.log(process.env.NEXT_PUBLIC_API_URL);
   return (
     <div className="ml-8 mt-24 min-h-screen">
       <Button handleClick={handleAdd()} className="mb-3">

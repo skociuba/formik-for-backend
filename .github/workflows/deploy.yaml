@@ -55,8 +55,8 @@ jobs:
               # Uruchomienie nowego kontenera
               sudo docker run -d --restart unless-stopped \
                 -p 3000:3000 \
-                --env NEXT_PUBLIC_API_URL= http://85.215.128.5/api \
-                --env NODE_ENV=production \
+                --env "NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}" > .env.production.local \
+                --env "NODE_ENV=production" >> .env.production.local \
                 --name nextjs-app \
                 sebastiankociuba/formik-for-backend:latest
 

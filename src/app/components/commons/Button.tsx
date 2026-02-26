@@ -5,7 +5,7 @@ export type ButtonProps = {
   rounded?: boolean;
   children: string | React.ReactNode;
   label?: string;
-  type?: 'button' | 'submit' | 'reset' | 'link';
+  type?: 'button' | 'submit' | 'reset';
   variant?:
     | 'primary'
     | 'secondary'

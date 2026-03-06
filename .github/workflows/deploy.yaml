@@ -42,8 +42,8 @@ jobs:
               npm install
               npm run build
 
-              pm2 stop nextjs-app || true
-              pm2 delete nextjs-app || true
-              pm2 start npm --name "nextjs-app" -- start -- -H 0.0.0.0 -p 3000
+              pm2 stop formik-for-backend || true
+              pm2 delete formik-for-backend || true
+              pm2 start npm --name "formik-for-backend" -- start -- -H 0.0.0.0 -p 3000
               pm2 save
 

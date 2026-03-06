@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  nextjs-app:
+  formik-for-backend:
     build:
       context: .
       dockerfile: Dockerfile.prod

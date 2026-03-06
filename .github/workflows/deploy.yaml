@@ -49,12 +49,11 @@ jobs:
               sudo docker pull sebastiankociuba/formik-for-backend:latest
 
               # Zatrzymanie i usunięcie starego kontenera
-              sudo docker stop nextjs-app || true
-              sudo docker rm nextjs-app || true
+              sudo docker stop formik-for-backend || true
+              sudo docker rm formik-for-backend || true
 
               # Uruchomienie nowego kontenera
               sudo docker run -d --restart unless-stopped \
                 -p 3000:3000 \
-                --name nextjs-app \
+                --name formik-for-backend \
                 sebastiankociuba/formik-for-backend:latest
-
